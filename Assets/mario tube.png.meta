@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mario tube_0: 224743597421630019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      grass block_0: -9111711338455145844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
