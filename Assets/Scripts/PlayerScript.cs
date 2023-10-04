@@ -17,9 +17,9 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W)) 
         {
-            if(isGrounded == true)
+            if (isGrounded == true)
             {
                 RB.AddForce(Vector2.up * Jumpforce);
                 isGrounded = false;
