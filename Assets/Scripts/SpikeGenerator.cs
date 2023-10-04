@@ -14,10 +14,10 @@ public class SpikeGenerator : MonoBehaviour
     void Awake()
     {
         currentSpeed = MinSpeed;
-        generateSpike();
+        GenerateSpike();
     }
 
-    public void generateSpike()
+    public void GenerateSpike()
     {
         GameObject SpikeIns = Instantiate(spike, transform.position, transform.rotation);
 
