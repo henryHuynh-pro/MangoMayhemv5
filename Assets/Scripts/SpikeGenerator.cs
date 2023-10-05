@@ -8,7 +8,7 @@ public class SpikeGenerator : MonoBehaviour
     public float MaxSpeed;
     public float currentSpeed;
 
-
+    public float SpeedMultiplier;
 
     // Start is called before the first frame update
     void Awake()
@@ -17,7 +17,13 @@ public class SpikeGenerator : MonoBehaviour
         GenerateSpike();
     }
 
-    public void GenerateSpike()
+    public void GenerateNextSpikeWithtGap()
+    {
+        float randomWait = Random.Range(0.1f, 2.2f);
+        Invoke("GenerateSpike", randomWait);
+    }
+
+    void GenerateSpike()
     {
         GameObject SpikeIns = Instantiate(spike, transform.position, transform.rotation);
 
@@ -27,6 +33,9 @@ public class SpikeGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentSpeed < MaxSpeed)
+        {
+            currentSpeed += SpeedMultiplier;
+        }
     }
 }
