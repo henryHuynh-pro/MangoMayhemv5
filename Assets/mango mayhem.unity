@@ -290,8 +290,8 @@ Transform:
   m_GameObject: {fileID: 240717294}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.1738477, y: 1.1466668, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.6, y: 2.78, z: 0}
+  m_LocalScale: {x: 1.2839264, y: 1.2839264, z: 1.2839264}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -377,7 +377,7 @@ Transform:
   m_GameObject: {fileID: 247411127}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.39, y: -1.82, z: 0}
+  m_LocalPosition: {x: -8.48, y: -2.04, z: 0}
   m_LocalScale: {x: 0.1, y: 0.09, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jumpforce: 800
   isGrounded: 0
-  ScoreTxt: {fileID: 0}
+  ScoreTxt: {fileID: 1558944120}
 --- !u!50 &247411131
 Rigidbody2D:
   serializedVersion: 4
@@ -1202,7 +1202,7 @@ Transform:
   m_GameObject: {fileID: 1191400068}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.14299, y: -2.0625656, z: 0}
+  m_LocalPosition: {x: 12.14299, y: -2.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1371,16 +1371,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 0
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Score: 50'
 --- !u!222 &1558944121
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1746,7 +1746,7 @@ Transform:
   m_GameObject: {fileID: 2515071765326373588}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.99, y: -1.97, z: 0}
+  m_LocalPosition: {x: 30.01, y: -2.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1817,10 +1817,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spike: {fileID: 8845061057916066801, guid: 88d9874a660876f47b1fedc39671c69c, type: 3}
-  MinSpeed: 5
-  MaxSpeed: 12
+  MinSpeed: 6
+  MaxSpeed: 15
   currentSpeed: 0
-  SpeedMultiplier: 0.00006
+  SpeedMultiplier: 0.001
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
