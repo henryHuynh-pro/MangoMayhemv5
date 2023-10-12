@@ -54,5 +54,11 @@ public class PlayerScript : MonoBehaviour
             isAlive = false;
             Time.timeScale = 0;
         }
+
+        if (collision.gameObject.CompareTag("Dexter")) 
+        {
+            isAlive = false;
+            Time.timeScale = 0;
+        }
     }
 }
