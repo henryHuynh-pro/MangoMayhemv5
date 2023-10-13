@@ -19,8 +19,8 @@ public class DexterGenerator : MonoBehaviour
 
     public void GenerateNextDexterWithtGap()
     {
-        float randomWait = Random.Range(0.1f, 2.2f);
-        Invoke("GenerateDexter", randomWait);
+        float v = Random.Range(0.2f, 2.2f);
+        Invoke("GenerateDexter", v);
     }
 
     void GenerateDexter()
