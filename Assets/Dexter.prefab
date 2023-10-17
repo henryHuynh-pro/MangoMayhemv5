@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3362101952853680746}
   - component: {fileID: 7451308468664791165}
   - component: {fileID: 5196626543676933338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dexter
   m_TagString: Dexter
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 6
 --- !u!114 &7451308468664791165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ Animator:
   m_GameObject: {fileID: 5772927168940064348}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 533791678b2ccc244870829985d49d75, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
