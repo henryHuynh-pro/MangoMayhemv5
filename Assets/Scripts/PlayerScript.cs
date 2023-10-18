@@ -22,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         time = 0f;
-        timeDelay = 0.5f;
+        timeDelay = 1f;
     }
 
     private void Awake()
@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time = time + 1f * Time.deltaTime;
+        time += 1f * Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.W))
         {
