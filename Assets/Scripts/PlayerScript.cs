@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -7,49 +9,39 @@ public class PlayerScript : MonoBehaviour
     public float DoubleJumpforce;
     float score;
 
-
     [SerializeField]
-    bool isGrounded = false;
+    float isGrounded = 1;
     bool isAlive = true;
 
     Rigidbody2D RB;
 
     public Text ScoreTxt;
-    public float time;
-    public float timeDelay;
-
-
-    void Start()
-    {
-        time = 0f;
-        timeDelay = 1f;
-    }
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         score = 0;
+
     }
     // Update is called once per frame
     void Update()
     {
-        time += 1f * Time.deltaTime;
-
+        
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (isGrounded == true)
+            if (isGrounded == 1)
             {
                 RB.AddForce(Vector2.up * Jumpforce);
-                isGrounded = false;
+                isGrounded = 2;
+                StartCoroutine(DoubleJumpDelay());
 
-                if (time >= timeDelay)
+                if (Input.GetKeyDown(KeyCode.W))
                 {
-                    time = 0f;
 
-                    if (isGrounded == false)
+                    if (isGrounded == 2)
                     {
                         RB.AddForce(Vector2.up * DoubleJumpforce);
-                        isGrounded = false;
+                        isGrounded = 2;
                     }
 
 
@@ -68,9 +60,9 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            if (isGrounded == false)
+            if (isGrounded == 2)
             {
-                isGrounded = true;
+                isGrounded = 1;
             }
         }
 
@@ -85,5 +77,11 @@ public class PlayerScript : MonoBehaviour
             isAlive = false;
             Time.timeScale = 0;
         }
+    }
+
+    private IEnumerator DoubleJumpDelay()
+    {
+        yield return new WaitForSeconds(0.005F);
+        
     }
 }
