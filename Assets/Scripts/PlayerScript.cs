@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class PlayerScript : MonoBehaviour
 {
     public float Jumpforce;
-    public float DoubleJumpforce;
     float score;
 
     [SerializeField]
@@ -16,6 +15,8 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D RB;
 
     public Text ScoreTxt;
+    private int extraJump;
+    public int extraJumpValue;
 
     private void Awake()
     {
@@ -24,35 +25,32 @@ public class PlayerScript : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             if (isGrounded == 1)
             {
-                RB.AddForce(Vector2.up * Jumpforce);
-                isGrounded = 2;
-                StartCoroutine(DoubleJumpDelay());
-
-                if (Input.GetKeyDown(KeyCode.W))
-                {
-
-                    if (isGrounded == 2)
-                    {
-                        RB.AddForce(Vector2.up * DoubleJumpforce);
-                        isGrounded = 2;
-                    }
-
-
-                }
+                extraJump = extraJumpValue;
             }
+            if (Input.GetKey(KeyCode.W) && isGrounded == 1)
+            {
+                RB.velocity = Vector2.up * Jumpforce;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
+            {
+                RB.velocity = Vector2.up * Jumpforce;
+
+                extraJump--;
+            }
+        }
 
             if (isAlive)
             {
                 score += Time.deltaTime * 4;
                 ScoreTxt.text = "SCORE:" + score.ToString("F");
-            }
+            
         }
     }
 
@@ -77,11 +75,5 @@ public class PlayerScript : MonoBehaviour
             isAlive = false;
             Time.timeScale = 0;
         }
-    }
-
-    private IEnumerator DoubleJumpDelay()
-    {
-        yield return new WaitForSeconds(0.005F);
-        
     }
 }
