@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3362101952853680746}
   - component: {fileID: 7451308468664791165}
   - component: {fileID: 5196626543676933338}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Dexter
   m_TagString: Dexter
   m_Icon: {fileID: 0}
