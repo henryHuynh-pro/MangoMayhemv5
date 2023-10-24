@@ -7,10 +7,16 @@ public class PlayerScript : MonoBehaviour
 {
     public float Jumpforce;
     float score;
+    
 
     [SerializeField]
-    float isGrounded = 1;
+    bool isGrounded = true;
+    //float isGrounded = 1;
     bool isAlive = true;
+    bool jumpKeyHeld = true;
+    bool isJumping = false;
+    Vector2 counterJumpForce;
+
 
     Rigidbody2D RB;
 
@@ -25,7 +31,46 @@ public class PlayerScript : MonoBehaviour
 
     }
     // Update is called once per frame
+
     private void Update()
+    {
+        public static float CalculateJumpForce(float gravityStrength, float jumpHeight)
+        {
+            //h = v^2/2g
+            //2gh = v^2
+            //sqrt(2gh) = v
+            return Mathf.Sqrt(2 * gravityStrength * jumpHeight);
+        }
+
+
+        jumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, 5.0f);
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            jumpKeyHeld = true;
+            if (isGrounded)
+            {
+                isJumping = true;
+                RB.AddForce(Vector2.up * jumpForce * RB.mass, ForceMode2D.Impulse);
+            }
+        }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            jumpKeyHeld = false;
+        }
+
+        // In FixedUpdate()
+        if (isJumping)
+        {
+            if (!jumpKeyHeld && Vector2.Dot(RB.velocity, Vector2.up) > 0)
+            {
+                RB.AddForce(counterJumpForce * RB.mass);
+            }
+        }
+    }
+
+
+    /*private void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -52,16 +97,22 @@ public class PlayerScript : MonoBehaviour
                 ScoreTxt.text = "SCORE:" + score.ToString("F");
             
         }
-    }
+    } */
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            if (isGrounded == 2)
+            if (isGrounded == false)
+            {
+                isGrounded = true;
+            }
+
+
+            /*if (isGrounded == 2)
             {
                 isGrounded = 1;
-            }
+            }  */
         }
 
         if (collision.gameObject.CompareTag("spike"))
