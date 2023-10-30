@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ab19b329201fa42ba16a0d8b741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jumpforce: 17
+  Jumpforce: 10000
   isGrounded: 1
   ScoreTxt: {fileID: 1558944120}
   extraJumpValue: 1
