@@ -15,5 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/mango mayhem.unity
     guid: 9c520866e5870194db0380c45c18599f
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4511e2ccaef927641a664a27f4550b45, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d63a2aa5bd0a8b541a5cda49a8bb5844, type: 2}
   m_UseUCBPForAssetBundles: 0

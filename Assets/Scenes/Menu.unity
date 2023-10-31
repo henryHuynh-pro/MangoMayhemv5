@@ -1808,7 +1808,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1119207176}
         m_TargetAssemblyTypeName: CharcterSelectMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: PlayMiguel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
