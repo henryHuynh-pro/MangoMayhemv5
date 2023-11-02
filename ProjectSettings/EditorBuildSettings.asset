@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: c8af79e7b63820a47b39e037832af39a
   - enabled: 1
-    path: Assets/Scenes/mango mayhem.unity
+    path: Assets/Scenes/MangoMayhem.unity
     guid: 9c520866e5870194db0380c45c18599f
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4511e2ccaef927641a664a27f4550b45, type: 2}
