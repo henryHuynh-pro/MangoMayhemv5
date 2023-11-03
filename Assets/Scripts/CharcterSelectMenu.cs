@@ -34,5 +34,8 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
+
+        // Instantiates the Prefab as a GameObject
+        GameObject newInstance = Instantiate(MiguelPlayer);
     }
 }
