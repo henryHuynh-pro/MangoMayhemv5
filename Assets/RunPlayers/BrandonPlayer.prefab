@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jumpforce: 15
   isGrounded: 1
-  ScoreTxt: {fileID: 0}
+  ScoreTxt: {fileID: 6308712008004662433, guid: 3562d5e0db2ba0d4e87d88f08a1419f9, type: 3}
   extraJumpValue: 1
 --- !u!95 &2534758006415806114
 Animator:
