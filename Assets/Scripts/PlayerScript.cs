@@ -5,18 +5,29 @@ using System.Collections.Generic;
 
 public class PlayerScript : MonoBehaviour
 {
+    public float CurrentJumpValue = 1;
+    public float JumpValue;
     public float Jumpforce;
-    float score;
+    public float score;
+    public Animation Run;
+    public Animation Jump;
+    public bool animatePhysics;
 
     [SerializeField]
-    float isGrounded = 1;
     bool isAlive = true;
 
     Rigidbody2D RB;
 
     public Text ScoreTxt;
-    private int extraJump;
-    public int extraJumpValue;
+
+    void Start()
+    {
+        Run = GetComponent<Animation>();
+        foreach (AnimationState state in Run)
+        {
+            state.speed = 0.5F;
+        }
+    }
 
     private void Awake()
     {
@@ -27,29 +38,20 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (isGrounded == 1)
-            {
-                extraJump = extraJumpValue;
-            }
-            if (Input.GetKey(KeyCode.W) && isGrounded == 1)
+            if (CurrentJumpValue > 0)
             {
                 RB.velocity = Vector2.up * Jumpforce;
+                CurrentJumpValue --;
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
-            {
-                RB.velocity = Vector2.up * Jumpforce;
 
-                extraJump--;
-            }
         }
-
-            if (isAlive)
-            {
-                score += Time.deltaTime * 2;
-               ScoreTxt.text = "SCORE:" + score.ToString("F");
+            
+        if (isAlive)
+        {
+            score += Time.deltaTime * 2;
+            ScoreTxt.text = "SCORE:" + score.ToString("F");
             
         }
     }
@@ -58,10 +60,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            if (isGrounded == 2)
-            {
-                isGrounded = 1;
-            }
+            CurrentJumpValue = JumpValue;
+            
         }
 
         if (collision.gameObject.CompareTag("spike"))
