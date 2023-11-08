@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7990567393459978235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.46, y: -1.29, z: 0}
+  m_LocalPosition: {x: -6.6, y: -1.29, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -235,10 +235,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ab19b329201fa42ba16a0d8b741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jumpforce: 15
-  isGrounded: 1
-  ScoreTxt: {fileID: 6308712008004662433, guid: 3562d5e0db2ba0d4e87d88f08a1419f9, type: 3}
-  extraJumpValue: 1
+  CurrentJumpValue: 1
+  JumpValue: 2
+  Jumpforce: 18
+  score: 0
+  Run: {fileID: 0}
+  Jump: {fileID: 0}
+  animatePhysics: 0
+  isAlive: 1
+  ScoreTxt: {fileID: 3212080319315676457, guid: 3562d5e0db2ba0d4e87d88f08a1419f9, type: 3}
 --- !u!95 &2534758006415806114
 Animator:
   serializedVersion: 7
