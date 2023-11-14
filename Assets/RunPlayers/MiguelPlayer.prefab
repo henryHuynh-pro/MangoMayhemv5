@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7445760739931036825}
   - component: {fileID: 650631418265866919}
   - component: {fileID: 2835942678327381489}
-  - component: {fileID: 2066826884808443393}
+  - component: {fileID: 3845743689799748941}
   m_Layer: 0
   m_Name: MiguelPlayer
   m_TagString: Untagged
@@ -241,12 +241,13 @@ MonoBehaviour:
   JumpValue: 2
   Jumpforce: 18
   score: 0
-  Run: {fileID: 0}
-  Jump: {fileID: 0}
+  OnGround: 0
+  Run: {fileID: 7400000, guid: 0a0b4f147259efd47a345d8cc7dbe1ac, type: 2}
+  Jump: {fileID: 7400000, guid: b6c2590cfa3b1084a90a07edc76f078c, type: 2}
   animatePhysics: 0
   isAlive: 1
   ScoreTxt: {fileID: 3212080319315676457, guid: 3562d5e0db2ba0d4e87d88f08a1419f9, type: 3}
---- !u!95 &2066826884808443393
+--- !u!95 &3845743689799748941
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
