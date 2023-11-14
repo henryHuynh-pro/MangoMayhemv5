@@ -9,9 +9,11 @@ public class PlayerScript : MonoBehaviour
     public float JumpValue;
     public float Jumpforce;
     public float score;
-    public Animation Run;
-    public Animation Jump;
-    public bool animatePhysics;
+    public bool OnGround;
+
+
+    public Animator animator;
+    bool Grounded;
 
     [SerializeField]
     bool isAlive = true;
@@ -22,32 +24,46 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        Run = GetComponent<Animation>();
-        foreach (AnimationState state in Run)
-        {
-            state.speed = 0.5F;
-        }
+        animator = gameObject.GetComponent<Animator>();
+        Grounded = true;
     }
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         score = 0;
+        animator = GetComponent<Animator>();
 
     }
     // Update is called once per frame
+
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (CurrentJumpValue > 0)
-            {
-                RB.velocity = Vector2.up * Jumpforce;
-                CurrentJumpValue --;
-            }
 
+        //Reset Jump Value and Run Anim
+        if (OnGround == true)
+        {
+            CurrentJumpValue = JumpValue;
+            Debug.Log("Running");
+            Grounded = true;
         }
-            
+
+        if (Input.GetKeyDown(KeyCode.W) && CurrentJumpValue > 0)
+        {
+            RB.velocity = Vector2.up * Jumpforce;
+            CurrentJumpValue --;
+            OnGround = false;
+            Debug.Log("Jumping");
+            Grounded = false;
+        }
+
+        if (Grounded == false)
+            animator.SetBool("Ground", false);
+
+        if (Grounded == true)
+            animator.SetBool("Ground", true);
+
         if (isAlive)
         {
             score += Time.deltaTime * 2;
@@ -60,8 +76,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            CurrentJumpValue = JumpValue;
-            
+            OnGround = true;
         }
 
         if (collision.gameObject.CompareTag("spike"))
