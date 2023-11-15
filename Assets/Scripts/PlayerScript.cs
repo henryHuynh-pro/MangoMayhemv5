@@ -24,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        anim.SetBool("Grounded", true);
     }
 
     private void Awake()
@@ -44,7 +45,7 @@ public class PlayerScript : MonoBehaviour
         {
             CurrentJumpValue = JumpValue;
             Debug.Log("Running");
-            
+            anim.SetBool("Grounded", true);
         }
 
         if (Input.GetKeyDown(KeyCode.W) && CurrentJumpValue > 0)
@@ -53,14 +54,23 @@ public class PlayerScript : MonoBehaviour
             CurrentJumpValue --;
             OnGround = false;
             Debug.Log("Jumping");
-            anim.SetTrigger("Grounded");
+            anim.SetBool("Grounded", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && CurrentJumpValue > 0)
+        {
+            RB.velocity = Vector2.up * Jumpforce;
+            CurrentJumpValue--;
+            OnGround = false;
+            Debug.Log("Jumping");
+            anim.SetBool("Grounded", false);
         }
 
         //if (Grounded == false)
-          //  animator.SetBool("Ground", false);
+        //  animator.SetBool("Ground", false);
 
         //if (Grounded == true)
-          //  animator.SetBool("Ground", true);
+        //  animator.SetBool("Ground", true);
 
         if (isAlive)
         {
