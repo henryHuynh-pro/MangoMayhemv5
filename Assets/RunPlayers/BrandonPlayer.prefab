@@ -239,9 +239,7 @@ MonoBehaviour:
   JumpValue: 2
   Jumpforce: 18
   score: 0
-  Run: {fileID: 0}
-  Jump: {fileID: 0}
-  animatePhysics: 0
+  OnGround: 0
   isAlive: 1
   ScoreTxt: {fileID: 3212080319315676457, guid: 3562d5e0db2ba0d4e87d88f08a1419f9, type: 3}
 --- !u!95 &2534758006415806114
@@ -254,7 +252,7 @@ Animator:
   m_GameObject: {fileID: 7990567393459978235}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3f735cd39e1018f438bb1d636d96fd57, type: 2}
+  m_Controller: {fileID: 9100000, guid: f1ecb7df05f9c254a8a0c25c43281b66, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
