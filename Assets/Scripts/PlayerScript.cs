@@ -57,11 +57,20 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("Grounded", false);
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && CurrentJumpValue > 0)
+        {
+            RB.velocity = Vector2.up * Jumpforce;
+            CurrentJumpValue--;
+            OnGround = false;
+            Debug.Log("Jumping");
+            anim.SetBool("Grounded", false);
+        }
+
         //if (Grounded == false)
-          //  animator.SetBool("Ground", false);
+        //  animator.SetBool("Ground", false);
 
         //if (Grounded == true)
-          //  animator.SetBool("Ground", true);
+        //  animator.SetBool("Ground", true);
 
         if (isAlive)
         {
