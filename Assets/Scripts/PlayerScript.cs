@@ -12,8 +12,7 @@ public class PlayerScript : MonoBehaviour
     public bool OnGround;
 
 
-    public Animator animator;
-    bool Grounded;
+    Animator anim;
 
     [SerializeField]
     bool isAlive = true;
@@ -24,15 +23,14 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
-        Grounded = true;
+        anim = GetComponent<Animator>();
     }
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         score = 0;
-        animator = GetComponent<Animator>();
+        
 
     }
     // Update is called once per frame
@@ -46,7 +44,7 @@ public class PlayerScript : MonoBehaviour
         {
             CurrentJumpValue = JumpValue;
             Debug.Log("Running");
-            Grounded = true;
+            
         }
 
         if (Input.GetKeyDown(KeyCode.W) && CurrentJumpValue > 0)
@@ -55,14 +53,14 @@ public class PlayerScript : MonoBehaviour
             CurrentJumpValue --;
             OnGround = false;
             Debug.Log("Jumping");
-            Grounded = false;
+            anim.SetTrigger("Grounded");
         }
 
-        if (Grounded == false)
-            animator.SetBool("Ground", false);
+        //if (Grounded == false)
+          //  animator.SetBool("Ground", false);
 
-        if (Grounded == true)
-            animator.SetBool("Ground", true);
+        //if (Grounded == true)
+          //  animator.SetBool("Ground", true);
 
         if (isAlive)
         {
