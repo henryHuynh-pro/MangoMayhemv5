@@ -8,6 +8,8 @@ public class CharcterSelectMenu : MonoBehaviour
     //Game
     public string MangoMayhem;
 
+    public GameObject Score;
+
     //Players For Run Game
     public GameObject MiguelPlayer;
     public GameObject HenryPlayer;
@@ -41,7 +43,9 @@ public class CharcterSelectMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject newInstance = Instantiate(MiguelPlayer);
+        GameObject loadPlayer = Instantiate(MiguelPlayer);
+
+        GameObject loadScore = Instantiate(Score);
     }
 
     //Henry Loader
@@ -72,7 +76,9 @@ public class CharcterSelectMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject newInstance = Instantiate(HenryPlayer);
+        GameObject loadPlayer = Instantiate(HenryPlayer);
+
+        GameObject loadScore = Instantiate(Score);
     }
 
 
@@ -104,6 +110,8 @@ public class CharcterSelectMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject newInstance = Instantiate(BrandonPlayer);
+        GameObject loadPlayer = Instantiate(BrandonPlayer);
+
+        GameObject loadScore = Instantiate(Score);
     }
 }

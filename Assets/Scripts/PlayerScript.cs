@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody2D RB;
 
-    public Text ScoreTxt;
+    public TextMesh ScoreTxt;
 
     void Start()
     {
@@ -65,12 +65,6 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Jumping");
             anim.SetBool("Grounded", false);
         }
-
-        //if (Grounded == false)
-        //  animator.SetBool("Ground", false);
-
-        //if (Grounded == true)
-        //  animator.SetBool("Ground", true);
 
         if (isAlive)
         {
