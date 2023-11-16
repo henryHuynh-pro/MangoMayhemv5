@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MangoMayhem: MangoMayhem
-  Score: {fileID: 0}
+  Score: {fileID: 1931334203824873619, guid: 6ae5b8b6d58bd3242adff05e3d66674a, type: 3}
   MiguelPlayer: {fileID: 2098578238254662127, guid: e79326c3513d9164eb06eb111e4a1d65, type: 3}
   HenryPlayer: {fileID: 0}
   BrandonPlayer: {fileID: 7990567393459978235, guid: 71c94300eaa8a1845891f1da50ad3ef0, type: 3}

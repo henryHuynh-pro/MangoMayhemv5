@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody2D RB;
 
-    public TextMesh ScoreTxt;
+    public Text ScoreTxt;
 
     void Start()
     {
