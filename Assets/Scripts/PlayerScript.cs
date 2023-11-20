@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -10,16 +11,17 @@ public class PlayerScript : MonoBehaviour
     public float Jumpforce;
     public float score;
     public bool OnGround;
-
+    
 
     Animator anim;
 
     [SerializeField]
     bool isAlive = true;
-
+    public TMP_Text Score;
     Rigidbody2D RB;
 
-    public Text ScoreTxt;
+    
+    
 
     void Start()
     {
@@ -68,8 +70,8 @@ public class PlayerScript : MonoBehaviour
 
         if (isAlive)
         {
-            score += Time.deltaTime * 2;
-            ScoreTxt.text = "SCORE:" + score.ToString("F");
+           score += Time.deltaTime * 1/2;
+           Score.text = "SCORE:" + score.ToString("F");
             
         }
     }

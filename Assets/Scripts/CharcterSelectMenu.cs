@@ -16,11 +16,13 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject BrandonPlayer;
     public GameObject HansenPlayer;
 
+
+
     //Miguel Loader
     public void PlayMiguel()
     {
         StartCoroutine(LoadSceneWithMiguel());
-
+        
     }
 
     IEnumerator LoadSceneWithMiguel()
@@ -39,13 +41,13 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
         SceneManager.MoveGameObjectToScene(MiguelPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
         GameObject loadPlayer = Instantiate(MiguelPlayer);
-
         GameObject loadScore = Instantiate(Score);
     }
 
@@ -72,13 +74,13 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
         SceneManager.MoveGameObjectToScene(HenryPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
         GameObject loadPlayer = Instantiate(HenryPlayer);
-
         GameObject loadScore = Instantiate(Score);
     }
 
@@ -106,14 +108,14 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
         SceneManager.MoveGameObjectToScene(BrandonPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject loadPlayer = Instantiate(BrandonPlayer);
-
         GameObject loadScore = Instantiate(Score);
+
     }
 
     public void PlayHansen()
@@ -138,13 +140,13 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
         SceneManager.MoveGameObjectToScene(HansenPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
         GameObject loadPlayer = Instantiate(HansenPlayer);
-
         GameObject loadScore = Instantiate(Score);
     }
 
