@@ -47,8 +47,8 @@ public class CharcterSelectMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject loadPlayer = Instantiate(MiguelPlayer);
-        GameObject loadScore = Instantiate(Score);
+        Instantiate(MiguelPlayer);
+        Instantiate(Score);
     }
 
     //Henry Loader
@@ -80,8 +80,8 @@ public class CharcterSelectMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject loadPlayer = Instantiate(HenryPlayer);
-        GameObject loadScore = Instantiate(Score);
+        Instantiate(HenryPlayer);
+        Instantiate(Score);
     }
 
 
@@ -114,7 +114,8 @@ public class CharcterSelectMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject loadScore = Instantiate(Score);
+        Instantiate(BrandonPlayer);
+        Instantiate(Score);
 
     }
 
@@ -146,8 +147,8 @@ public class CharcterSelectMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        GameObject loadPlayer = Instantiate(HansenPlayer);
-        GameObject loadScore = Instantiate(Score);
+        Instantiate(HansenPlayer);
+        Instantiate(Score);
     }
 
 }
