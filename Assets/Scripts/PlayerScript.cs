@@ -11,42 +11,49 @@ public class PlayerScript : MonoBehaviour
     public float Jumpforce;
     public float score;
     public bool OnGround;
-    
+
 
     Animator anim;
 
     [SerializeField]
     bool isAlive = true;
-    public TMP_Text Score;
+    //public TMP_Text Score;
     Rigidbody2D RB;
 
-    
-    
+    //public TMP_Text Score = (TMP_Text)FindAnyObjectByType(typeof(TMP_Text));
+    //public TMP_Text ScoreObject;
+    public TMP_Text ScoreCode;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("Grounded", true);
+
+        TMP_Text ScoreObject = (TMP_Text)FindFirstObjectByType(typeof(TMP_Text));
+        //Debug.Log(Score);
+        Debug.Log("TextMesh object found: " + ScoreObject.text);
     }
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         score = 0;
-        
+
 
     }
     // Update is called once per frame
 
     
+
     private void Update()
     {
+        
 
         //Reset Jump Value and Run Anim
         if (OnGround == true)
         {
             CurrentJumpValue = JumpValue;
-            Debug.Log("Running");
+            //Debug.Log("Running");
             anim.SetBool("Grounded", true);
         }
 
@@ -55,7 +62,7 @@ public class PlayerScript : MonoBehaviour
             RB.velocity = Vector2.up * Jumpforce;
             CurrentJumpValue --;
             OnGround = false;
-            Debug.Log("Jumping");
+            //Debug.Log("Jumping");
             anim.SetBool("Grounded", false);
         }
 
@@ -64,16 +71,19 @@ public class PlayerScript : MonoBehaviour
             RB.velocity = Vector2.up * Jumpforce;
             CurrentJumpValue--;
             OnGround = false;
-            Debug.Log("Jumping");
+           // Debug.Log("Jumping");
             anim.SetBool("Grounded", false);
         }
 
         if (isAlive)
         {
            score += Time.deltaTime * 1/2;
-           Score.text = "SCORE:" + score.ToString("F");
-            
+           ScoreCode.text = "SCORE:" + score.ToString("F");
+           Debug.Log("SCORE:" + score.ToString("F"));
         }
+
+       
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
