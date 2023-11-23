@@ -22,16 +22,17 @@ public class PlayerScript : MonoBehaviour
 
     //public TMP_Text Score = (TMP_Text)FindAnyObjectByType(typeof(TMP_Text));
     //public TMP_Text ScoreObject;
-    public TMP_Text ScoreCode;
+    ///public TMP_Text Score = (TMP_Text) FindAnyObjectByType(typeof(TMP_Text));
+    //public TMP_Text Score;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("Grounded", true);
 
-        TMP_Text ScoreObject = (TMP_Text)FindFirstObjectByType(typeof(TMP_Text));
-        //Debug.Log(Score);
-        Debug.Log("TextMesh object found: " + ScoreObject.text);
+        //TMP_Text ScoreObject = (TMP_Text)FindFirstObjectByType(typeof(TMP_Text));
+        this.gameObject.AddComponent<TextMeshProUGUI>();
+        //Debug.Log("TextMesh object found: " + Score.text);
     }
 
     private void Awake()
@@ -78,8 +79,9 @@ public class PlayerScript : MonoBehaviour
         if (isAlive)
         {
            score += Time.deltaTime * 1/2;
-           ScoreCode.text = "SCORE:" + score.ToString("F");
-           Debug.Log("SCORE:" + score.ToString("F"));
+           GetComponent<TextMesh>().text = "SCORE:" + score.ToString("F");
+           
+          // Debug.Log("SCORE:" + score.ToString("F"));
         }
 
        
