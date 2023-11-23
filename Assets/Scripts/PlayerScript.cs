@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
         anim.SetBool("Grounded", true);
 
         //TMP_Text ScoreObject = (TMP_Text)FindFirstObjectByType(typeof(TMP_Text));
-        this.gameObject.AddComponent<TextMeshProUGUI>();
+        //this.gameObject.AddComponent<TextMeshProUGUI>();
         //Debug.Log("TextMesh object found: " + Score.text);
     }
 
