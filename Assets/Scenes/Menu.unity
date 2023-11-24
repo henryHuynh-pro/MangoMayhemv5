@@ -1485,7 +1485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 214, y: -10}
+  m_AnchoredPosition: {x: 259, y: -10}
   m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537661775
@@ -1534,7 +1534,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1119207176}
         m_TargetAssemblyTypeName: CharcterSelectMenu, Assembly-CSharp
-        m_MethodName: PlayHansen
+        m_MethodName: PlayNguyen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3028,10 +3028,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 467124732}
+  - {fileID: 2047561808}
   - {fileID: 1742239550}
   - {fileID: 1119452996}
   - {fileID: 537661774}
-  - {fileID: 2047561808}
   - {fileID: 1517923610}
   m_Father: {fileID: 1639515555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3058,6 +3058,7 @@ MonoBehaviour:
   HenryPlayer: {fileID: 0}
   BrandonPlayer: {fileID: 7990567393459978235, guid: 71c94300eaa8a1845891f1da50ad3ef0, type: 3}
   HansenPlayer: {fileID: 3876228509299023886, guid: 7af44c0a5d0ccf34a941471489b803e0, type: 3}
+  NguyenPlayer: {fileID: 2341039380017979696, guid: 56b77f977b782c244a1cc6af5b69fd44, type: 3}
 --- !u!1 &1119452995
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,7 +3096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 41, y: -10}
+  m_AnchoredPosition: {x: 90, y: -10}
   m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119452997
@@ -5064,7 +5065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -10}
+  m_AnchoredPosition: {x: -81, y: -10}
   m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742239551
@@ -6107,7 +6108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -10}
+  m_AnchoredPosition: {x: -251, y: -10}
   m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047561809
@@ -6395,7 +6396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1b77e26d9829fa47a544a4337363106, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 887611c9b8ca6e6498be97d66d78ebe5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -15,7 +15,7 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject HenryPlayer;
     public GameObject BrandonPlayer;
     public GameObject HansenPlayer;
-
+    public GameObject NguyenPlayer;
 
 
     //Miguel Loader
@@ -151,4 +151,35 @@ public class CharcterSelectMenu : MonoBehaviour
         Instantiate(Score);
     }
 
+    public void PlayNguyen()
+    {
+        StartCoroutine(LoadSceneWithNguyen());
+
+    }
+
+    IEnumerator LoadSceneWithNguyen()
+    {
+        // Set the current Scene to be able to unload it later
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
+
+        // Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        SceneManager.MoveGameObjectToScene(NguyenPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+        // Unload the previous Scene
+        SceneManager.UnloadSceneAsync(currentScene);
+
+        // Instantiates the Prefab as a GameObject
+        Instantiate(NguyenPlayer);
+        Instantiate(Score);
+    }
 }
