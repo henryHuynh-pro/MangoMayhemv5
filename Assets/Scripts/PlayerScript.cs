@@ -11,12 +11,12 @@ public class PlayerScript : MonoBehaviour
     public float Jumpforce;
     public float score;
     public bool OnGround;
-
+    public bool isAlive;
 
     Animator anim;
 
     [SerializeField]
-    bool isAlive = true;
+    //ol isAlive = true;
     //public TMP_Text Score;
     Rigidbody2D RB;
 
@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.SetBool("Grounded", true);
-
+        isAlive = true;
         //TMP_Text ScoreObject = (TMP_Text)FindFirstObjectByType(typeof(TMP_Text));
         //this.gameObject.AddComponent<TextMeshProUGUI>();
         //Debug.Log("TextMesh object found: " + Score.text);
