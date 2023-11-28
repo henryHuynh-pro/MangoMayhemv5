@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2534758006415806114}
   m_Layer: 0
   m_Name: BrandonPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   score: 0
   OnGround: 0
   isAlive: 1
-  Score: {fileID: 0}
+  RB: {fileID: 0}
 --- !u!95 &2534758006415806114
 Animator:
   serializedVersion: 7

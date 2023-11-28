@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 100528964609358739}
   m_Layer: 0
   m_Name: HansenPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   score: 0
   OnGround: 0
   isAlive: 1
-  ScoreTxt: {fileID: 2927062060399505887, guid: 6ae5b8b6d58bd3242adff05e3d66674a, type: 3}
+  RB: {fileID: 0}
 --- !u!95 &100528964609358739
 Animator:
   serializedVersion: 7
