@@ -78,8 +78,7 @@ public class PlayerScript : MonoBehaviour
 
         if (isAlive)
         {
-           score += Time.deltaTime * 1/2;
-           GetComponent<TextMesh>().text = "SCORE:" + score.ToString("F");
+           
            
           // Debug.Log("SCORE:" + score.ToString("F"));
         }
