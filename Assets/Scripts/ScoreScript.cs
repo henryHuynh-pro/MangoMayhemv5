@@ -10,7 +10,7 @@ public class ScoreScript : MonoBehaviour
 
     public TMP_Text scoreText;
     public float score;
-    
+    public float coins;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +23,14 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        coins = playerScript.coins;
+
         if (playerScript.isAlive == true)
         {
-            score += Time.deltaTime * 1 / 2;
-            scoreText.text = "score " + score.ToString("F");
+           score += Time.deltaTime * 1 / 2;
+           scoreText.text = "SCORE " + score.ToString("F");
         }
+
+        scoreText.text = "COINS " + coins;
     }
 }

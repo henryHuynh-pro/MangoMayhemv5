@@ -24,5 +24,7 @@ public class CoinScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        
     }
 }

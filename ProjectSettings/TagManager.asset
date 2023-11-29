@@ -8,6 +8,7 @@ TagManager:
   - ground
   - spike
   - Dexter
+  - Coin
   layers:
   - Default
   - TransparentFX
