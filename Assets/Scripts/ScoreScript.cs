@@ -8,6 +8,7 @@ public class ScoreScript : MonoBehaviour
 {
     PlayerScript playerScript;
 
+    public TMP_Text coinText;
     public TMP_Text scoreText;
     public float score;
     public float coins;
@@ -29,8 +30,9 @@ public class ScoreScript : MonoBehaviour
         {
            score += Time.deltaTime * 1 / 2;
            scoreText.text = "SCORE " + score.ToString("F");
+           
         }
 
-        scoreText.text = "COINS " + coins;
+        coinText.text = "COINS " + coins;
     }
 }
