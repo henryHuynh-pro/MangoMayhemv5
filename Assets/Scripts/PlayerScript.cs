@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     public float Jumpforce;
     public float score;
     public float coins;
+    public float checkJump;
     public bool OnGround;
     public bool isAlive;
     public bool collectedCoin;
@@ -31,6 +32,7 @@ public class PlayerScript : MonoBehaviour
         isAlive = true;
         collectedCoin = false;
         usedFirstJump = false;
+        checkJump = JumpValue - 1;
     }
 
     private void Awake()
@@ -42,7 +44,10 @@ public class PlayerScript : MonoBehaviour
     }
     // Update is called once per frame
 
-    
+    public void Jump()
+    {
+
+    }
 
     private void Update()
     {
@@ -59,12 +64,25 @@ public class PlayerScript : MonoBehaviour
             
         }
 
-        if (CurrentJumpValue > 0 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        if (OnGround == true && CurrentJumpValue == JumpValue && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        {
+            RB.velocity = Vector2.up * Jumpforce;
+            
+            usedFirstJump = true;
+            Debug.Log("First Jump");
+            anim.SetBool("Grounded", false);
+            //anim.SetInteger("Height", 1);
+            OnGround = false;
+            CurrentJumpValue = JumpValue - 1;
+
+        }
+
+        if (OnGround == true && CurrentJumpValue <= checkJump && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
         {
             RB.velocity = Vector2.up * Jumpforce;
             CurrentJumpValue --;
-            usedFirstJump = true;
-            //Debug.Log("First Jump");
+            usedFirstJump = false;
+            Debug.Log("Double Jump");
             anim.SetBool("Grounded", false);
             //anim.SetInteger("Height", 1);
             OnGround = false;
