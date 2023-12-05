@@ -43,11 +43,7 @@ public class PlayerScript : MonoBehaviour
 
     }
     // Update is called once per frame
-
-    public void Jump()
-    {
-
-    }
+    
 
     private void Update()
     {
@@ -58,8 +54,7 @@ public class PlayerScript : MonoBehaviour
         {
             usedFirstJump = false;
             CurrentJumpValue = JumpValue;
-            Debug.Log("Running");
-            
+            //Debug.Log("Running");
             anim.SetInteger("Height", 0);
             
         }
@@ -69,7 +64,7 @@ public class PlayerScript : MonoBehaviour
             RB.velocity = Vector2.up * Jumpforce;
             CurrentJumpValue--;
             usedFirstJump = false;
-            Debug.Log("Double Jump");
+            //Debug.Log("Double Jump");
             anim.SetBool("Grounded", false);
             anim.SetInteger("Height", 2);
             OnGround = false;
@@ -80,7 +75,7 @@ public class PlayerScript : MonoBehaviour
         {
             RB.velocity = Vector2.up * Jumpforce;
             usedFirstJump = true;
-            Debug.Log("First Jump");
+            //Debug.Log("First Jump");
             anim.SetBool("Grounded", false);
             anim.SetInteger("Height", 1);
             OnGround = false;
@@ -89,19 +84,6 @@ public class PlayerScript : MonoBehaviour
         }
 
         
-
-        /*if (CurrentJumpValue <= JumpValue - 2)
-        {
-            Debug.Log("Double Jump");
-            anim.SetInteger("Height", 2);
-        }
-
-        if (CurrentJumpValue > 0)
-        {
-            Debug.Log("First Jump");
-            anim.SetInteger("Height", 1);
-        }*/
-
         if (isAlive)
         {
            
