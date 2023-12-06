@@ -43,11 +43,7 @@ public class PlayerScript : MonoBehaviour
 
     }
     // Update is called once per frame
-
-    public void Jump()
-    {
-
-    }
+    
 
     private void Update()
     {
@@ -58,49 +54,36 @@ public class PlayerScript : MonoBehaviour
         {
             usedFirstJump = false;
             CurrentJumpValue = JumpValue;
-            Debug.Log("Running");
-            anim.SetBool("Grounded", true);
+            //Debug.Log("Running");
             anim.SetInteger("Height", 0);
             
         }
 
-        if (OnGround == true && CurrentJumpValue == JumpValue && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        if (OnGround == false && CurrentJumpValue <= checkJump && CurrentJumpValue > 0 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
         {
             RB.velocity = Vector2.up * Jumpforce;
-            
-            usedFirstJump = true;
-            Debug.Log("First Jump");
+            CurrentJumpValue--;
+            usedFirstJump = false;
+            //Debug.Log("Double Jump");
             anim.SetBool("Grounded", false);
-            //anim.SetInteger("Height", 1);
+            anim.SetInteger("Height", 2);
+            OnGround = false;
+
+        }
+
+        if (OnGround == true && CurrentJumpValue > checkJump && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        {
+            RB.velocity = Vector2.up * Jumpforce;
+            usedFirstJump = true;
+            //Debug.Log("First Jump");
+            anim.SetBool("Grounded", false);
+            anim.SetInteger("Height", 1);
             OnGround = false;
             CurrentJumpValue = JumpValue - 1;
 
         }
 
-        if (OnGround == true && CurrentJumpValue <= checkJump && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
-        {
-            RB.velocity = Vector2.up * Jumpforce;
-            CurrentJumpValue --;
-            usedFirstJump = false;
-            Debug.Log("Double Jump");
-            anim.SetBool("Grounded", false);
-            //anim.SetInteger("Height", 1);
-            OnGround = false;
-
-        }
-
-        if (CurrentJumpValue <= JumpValue - 2)
-        {
-            Debug.Log("Double Jump");
-            anim.SetInteger("Height", 2);
-        }
-
-        if (CurrentJumpValue > 0)
-        {
-            Debug.Log("First Jump");
-            anim.SetInteger("Height", 1);
-        }
-
+        
         if (isAlive)
         {
            

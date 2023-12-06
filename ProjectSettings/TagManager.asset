@@ -9,6 +9,7 @@ TagManager:
   - spike
   - Dexter
   - Coin
+  - CoinCounter
   layers:
   - Default
   - TransparentFX
