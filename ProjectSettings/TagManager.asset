@@ -10,6 +10,7 @@ TagManager:
   - Dexter
   - Coin
   - CoinCounter
+  - Coins
   layers:
   - Default
   - TransparentFX
