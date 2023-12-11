@@ -7,6 +7,7 @@ using System;
 public class ScoreScript : MonoBehaviour
 {
     PlayerScript playerScript;
+    RunButtons runButtons;
 
     public TMP_Text coinText;
     public TMP_Text scoreText;
@@ -18,6 +19,7 @@ public class ScoreScript : MonoBehaviour
     {
         score = 1;
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        runButtons = GameObject.FindGameObjectWithTag("runButtons").GetComponent<RunButtons>();
 
     }
 
@@ -26,7 +28,7 @@ public class ScoreScript : MonoBehaviour
     {
         coins = playerScript.coins;
 
-        if (playerScript.isAlive == true)
+        if (playerScript.isAlive == true || runButtons.stopScore == false)
         {
            score += Time.deltaTime * 1 / 2;
            scoreText.text = "SCORE " + score.ToString("F");
@@ -34,5 +36,6 @@ public class ScoreScript : MonoBehaviour
         }
 
         coinText.text = "COINS " + coins;
+
     }
 }

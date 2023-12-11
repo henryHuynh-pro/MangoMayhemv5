@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
             CurrentJumpValue = JumpValue;
             //Debug.Log("Running");
             anim.SetInteger("Height", 0);
-            
+            anim.SetBool("Grounded", true);
         }
 
         if (OnGround == false && CurrentJumpValue <= checkJump && CurrentJumpValue > 0 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))

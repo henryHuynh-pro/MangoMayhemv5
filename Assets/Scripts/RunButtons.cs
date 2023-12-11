@@ -7,16 +7,23 @@ public class RunButtons : MonoBehaviour
 {
     public string Menu;
 
+    public bool stopScore;
+
     public GameObject Coins;
 
-        
+
+    void Start()
+    {
+        stopScore = false;
+    }
+
     public void Quit()
     {
         //ScoreCounter = GameObject.FindGameObjectWithTag("CoinCounter");
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 
         StartCoroutine(MoveScoreToMenu());
-
+        stopScore = true;
         
     }
 
