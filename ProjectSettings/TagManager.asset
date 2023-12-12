@@ -11,6 +11,7 @@ TagManager:
   - Coin
   - CoinCounter
   - Coins
+  - runButtons
   layers:
   - Default
   - TransparentFX
