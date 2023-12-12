@@ -55,7 +55,7 @@ public class RunButtons : MonoBehaviour
         
         SceneManager.UnloadSceneAsync(currentScene);
 
-       
-        
+        Instantiate(Coins);
+
     }
 }
