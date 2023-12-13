@@ -3585,7 +3585,7 @@ GameObject:
   - component: {fileID: 1119207176}
   m_Layer: 5
   m_Name: CharacterMenu
-  m_TagString: Untagged
+  m_TagString: characterMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3631,6 +3631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MangoMayhem: MangoMayhem
   Score: {fileID: 9009398505752278550, guid: 320b752935e70ae44aca75575596d594, type: 3}
+  coins: 0
   MiguelPlayer: {fileID: 2098578238254662127, guid: e79326c3513d9164eb06eb111e4a1d65, type: 3}
   HenryPlayer: {fileID: 0}
   BrandonPlayer: {fileID: 7990567393459978235, guid: 71c94300eaa8a1845891f1da50ad3ef0, type: 3}
@@ -3638,6 +3639,14 @@ MonoBehaviour:
   NguyenPlayer: {fileID: 2341039380017979696, guid: 56b77f977b782c244a1cc6af5b69fd44, type: 3}
   JaxsonPlayer: {fileID: 1556419064769155730, guid: d52ef729825a62e4eac51515cd3dc655, type: 3}
   WyattPlayer: {fileID: 1445183342333154985, guid: 2929cd5f823fc014aba86dc3a15d0919, type: 3}
+  MiguelLock: 0
+  HenryLock: 0
+  BrandonLock: 0
+  HansenLock: 0
+  NguyenLock: 0
+  JaxsonLock: 0
+  WyattLock: 0
+  purchase: 0
 --- !u!1 &1119452995
 GameObject:
   m_ObjectHideFlags: 0
@@ -4318,6 +4327,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242113505}
+  m_CullTransparentMesh: 1
+--- !u!1 &1355818793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1355818794}
+  - component: {fileID: 1355818796}
+  - component: {fileID: 1355818795}
+  m_Layer: 5
+  m_Name: WyattLock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1355818794
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355818793}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.4, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1870272710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1355818795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355818793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 66813f77c2f7802468b1f9653208766c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1355818796
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355818793}
   m_CullTransparentMesh: 1
 --- !u!1 &1402135391
 GameObject:
@@ -6278,6 +6362,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 758470895}
+  - {fileID: 1355818794}
   - {fileID: 582482775}
   m_Father: {fileID: 1119207175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

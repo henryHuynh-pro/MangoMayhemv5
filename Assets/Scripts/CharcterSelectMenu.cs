@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class CharcterSelectMenu : MonoBehaviour
 {
     //Game
+    ScoreScript scoreScript;
+
     public string MangoMayhem;
 
     public GameObject Score;
+
+    public float coins;
+    
 
     //Players For Run Game
     public GameObject MiguelPlayer;
@@ -19,12 +24,55 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject JaxsonPlayer;
     public GameObject WyattPlayer;
 
+    //Character Lock
+    public bool MiguelLock;
+    public bool HenryLock;
+    public bool BrandonLock;
+    public bool HansenLock;
+    public bool NguyenLock;
+    public bool JaxsonLock;
+    public bool WyattLock;
+    public bool purchase;
+
+    void Start()
+    {
+        scoreScript = GameObject.FindGameObjectWithTag("Coins").GetComponent<ScoreScript>();
+
+        //Lock All Skins
+        HenryLock = true;
+        BrandonLock = true;
+        HansenLock = true;
+        NguyenLock = true;
+        JaxsonLock = true;
+        WyattLock = true;
+        MiguelLock = true;
+    }
+
+    void Update()
+    {
+        coins = scoreScript.coins;
+        //scoreScript.coins = coins;
+    }
+
+
 
     //Miguel Loader
     public void PlayMiguel()
     {
-        StartCoroutine(LoadSceneWithMiguel());
-        
+
+        if (coins >= 1)
+        {
+            //StartCoroutine(LoadSceneWithMiguel());
+            scoreScript.coins--;
+            MiguelLock = false;
+            
+            Debug.Log("purchase success!");
+        } else
+        {
+            Debug.Log("not enough coins");
+        }
+
+
     }
 
     IEnumerator LoadSceneWithMiguel()

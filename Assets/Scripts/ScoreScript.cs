@@ -8,6 +8,7 @@ public class ScoreScript : MonoBehaviour
 {
     PlayerScript playerScript;
     RunButtons runButtons;
+    CharcterSelectMenu characterSelectMenu;
 
     public TMP_Text coinText;
     public TMP_Text scoreText;
@@ -20,15 +21,17 @@ public class ScoreScript : MonoBehaviour
         score = 1;
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         runButtons = GameObject.FindGameObjectWithTag("runButtons").GetComponent<RunButtons>();
-
+        characterSelectMenu = GameObject.FindGameObjectWithTag("characterMenu").GetComponent<CharcterSelectMenu>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        coins = characterSelectMenu.coins;
+
         coins = playerScript.coins;
 
-        if (playerScript.isAlive == true || runButtons.stopScore == false)
+        if (playerScript.isAlive == true)
         {
            score += Time.deltaTime * 1 / 2;
            scoreText.text = "SCORE " + score.ToString("F");
