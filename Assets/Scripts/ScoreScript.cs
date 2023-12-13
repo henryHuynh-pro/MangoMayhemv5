@@ -27,10 +27,8 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (characterSelectMenu.purchase == true)
-        {
-            coins = characterSelectMenu.coins;
-        }
+        coins = characterSelectMenu.coins;
+
         coins = playerScript.coins;
 
         if (playerScript.isAlive == true)

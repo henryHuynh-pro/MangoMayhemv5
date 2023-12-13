@@ -25,23 +25,33 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject WyattPlayer;
 
     //Character Lock
+    public bool MiguelLock;
     public bool HenryLock;
     public bool BrandonLock;
     public bool HansenLock;
     public bool NguyenLock;
     public bool JaxsonLock;
     public bool WyattLock;
+    public bool purchase;
 
     void Start()
     {
         scoreScript = GameObject.FindGameObjectWithTag("Coins").GetComponent<ScoreScript>();
-        
+
+        //Lock All Skins
+        HenryLock = true;
+        BrandonLock = true;
+        HansenLock = true;
+        NguyenLock = true;
+        JaxsonLock = true;
+        WyattLock = true;
+        MiguelLock = true;
     }
 
     void Update()
     {
         coins = scoreScript.coins;
-
+        //scoreScript.coins = coins;
     }
 
 
@@ -54,6 +64,9 @@ public class CharcterSelectMenu : MonoBehaviour
         {
             //StartCoroutine(LoadSceneWithMiguel());
             scoreScript.coins--;
+            MiguelLock = false;
+            
+            Debug.Log("purchase success!");
         } else
         {
             Debug.Log("not enough coins");

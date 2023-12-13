@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
+    CharcterSelectMenu characterSelectMenu;
+
     public float CurrentJumpValue = 1;
     public float JumpValue;
     public float Jumpforce;
@@ -26,6 +28,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        characterSelectMenu = GameObject.FindGameObjectWithTag("characterMenu").GetComponent<CharcterSelectMenu>();
         anim = GetComponent<Animator>();
         anim.SetBool("Grounded", true);
         anim.SetInteger("Height", 0);
@@ -47,7 +50,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        
+        coins = characterSelectMenu.coins;
 
         //Reset Jump Value and Run Anim
         if (OnGround == true)
