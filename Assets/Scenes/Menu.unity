@@ -4340,7 +4340,7 @@ GameObject:
   - component: {fileID: 1355818796}
   - component: {fileID: 1355818795}
   m_Layer: 5
-  m_Name: Lock
+  m_Name: WyattLock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
