@@ -50,7 +50,10 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        coins = characterSelectMenu.coins;
+        if (coins <= characterSelectMenu.coins)
+        {
+            coins = characterSelectMenu.coins;
+        }
 
         //Reset Jump Value and Run Anim
         if (OnGround == true)
@@ -62,7 +65,7 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("Grounded", true);
         }
 
-        if (OnGround == false && CurrentJumpValue <= checkJump && CurrentJumpValue > 0 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        if (OnGround == false && CurrentJumpValue <= checkJump && CurrentJumpValue > 0 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             RB.velocity = Vector2.up * Jumpforce;
             CurrentJumpValue--;
@@ -74,7 +77,7 @@ public class PlayerScript : MonoBehaviour
 
         }
 
-        if (OnGround == true && CurrentJumpValue > checkJump && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        if (OnGround == true && CurrentJumpValue > checkJump && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             RB.velocity = Vector2.up * Jumpforce;
             usedFirstJump = true;

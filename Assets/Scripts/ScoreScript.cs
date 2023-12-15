@@ -27,8 +27,9 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coins = characterSelectMenu.coins;
+        coinText.text = "COINS " + coins;
 
+        coins = characterSelectMenu.coins;
         coins = playerScript.coins;
 
         if (playerScript.isAlive == true)
@@ -37,8 +38,5 @@ public class ScoreScript : MonoBehaviour
            scoreText.text = "SCORE " + score.ToString("F");
            
         }
-
-        coinText.text = "COINS " + coins;
-
     }
 }

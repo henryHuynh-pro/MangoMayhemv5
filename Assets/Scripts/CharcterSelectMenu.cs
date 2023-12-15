@@ -46,12 +46,15 @@ public class CharcterSelectMenu : MonoBehaviour
         JaxsonLock = true;
         WyattLock = true;
         MiguelLock = true;
+
+        coins = scoreScript.coins;
     }
 
     void Update()
     {
-        coins = scoreScript.coins;
-        //scoreScript.coins = coins;
+        
+        
+        
     }
 
 
@@ -59,20 +62,29 @@ public class CharcterSelectMenu : MonoBehaviour
     //Miguel Loader
     public void PlayMiguel()
     {
+        
 
-        if (coins >= 1)
+        if (MiguelLock == false)
         {
-            //StartCoroutine(LoadSceneWithMiguel());
-            scoreScript.coins--;
-            MiguelLock = false;
+            StartCoroutine(LoadSceneWithMiguel());
             
-            Debug.Log("purchase success!");
-        } else
-        {
-            Debug.Log("not enough coins");
         }
 
+        if (coins >= 1 && MiguelLock == true)
+        {
+           
+            scoreScript.coins -= 1;
+            MiguelLock = false;
+            purchase = true;
+            Debug.Log("purchase success!");
+            //scoreScript.coins = coins;
+        } else
+        {
+            Debug.Log("not enough coins or already bought");
+            
+        }
 
+        coins = scoreScript.coins;
     }
 
     IEnumerator LoadSceneWithMiguel()
