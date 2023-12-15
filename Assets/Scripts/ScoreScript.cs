@@ -28,9 +28,15 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         coinText.text = "COINS " + coins;
-
+        
+        
         coins = characterSelectMenu.coins;
-        coins = playerScript.coins;
+        
+
+        if(playerScript.coins >= coins)
+        {
+            coins = playerScript.coins;
+        }
 
         if (playerScript.isAlive == true)
         {

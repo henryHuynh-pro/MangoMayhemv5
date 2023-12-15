@@ -61,8 +61,7 @@ public class PlayerScript : MonoBehaviour
             usedFirstJump = false;
             CurrentJumpValue = JumpValue;
             //Debug.Log("Running");
-            anim.SetInteger("Height", 0);
-            anim.SetBool("Grounded", true);
+            
         }
 
         if (OnGround == false && CurrentJumpValue <= checkJump && CurrentJumpValue > 0 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)))
@@ -72,7 +71,6 @@ public class PlayerScript : MonoBehaviour
             usedFirstJump = false;
             //Debug.Log("Double Jump");
             anim.SetBool("Grounded", false);
-            anim.SetInteger("Height", 2);
             OnGround = false;
 
         }
@@ -83,7 +81,6 @@ public class PlayerScript : MonoBehaviour
             usedFirstJump = true;
             //Debug.Log("First Jump");
             anim.SetBool("Grounded", false);
-            anim.SetInteger("Height", 1);
             OnGround = false;
             CurrentJumpValue = JumpValue - 1;
 
@@ -106,6 +103,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("ground"))
         {
             OnGround = true;
+            anim.SetBool("Grounded", true);
         }
 
         if (collision.gameObject.CompareTag("spike"))
