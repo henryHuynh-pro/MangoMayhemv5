@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CharcterSelectMenu : MonoBehaviour
 {
@@ -27,6 +28,16 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject WyattPlayer;
     public GameObject CaelanPlayer;
 
+    //Player Locks
+    public Image MiguelLockImg;
+    public Image HenryLockImg;
+    public Image BrandonLockImg;
+    public Image HansenLockImg;
+    public Image NguyenLockImg;
+    public Image JaxsonLockImg;
+    public Image WyattLockImg;
+    public Image CaelanLockImg;
+
     //Character Lock
     public bool MiguelLock;
     public bool HenryLock;
@@ -35,7 +46,6 @@ public class CharcterSelectMenu : MonoBehaviour
     public bool NguyenLock;
     public bool JaxsonLock;
     public bool WyattLock;
-    public bool purchase;
     public bool CaelanLock;
 
     void Start()
@@ -53,44 +63,46 @@ public class CharcterSelectMenu : MonoBehaviour
         MiguelLock = true;
         CaelanLock = true;
 
+        //Lock All Images
+        MiguelLockImg.enabled = true;
+        HenryLockImg.enabled = true;
+        BrandonLockImg.enabled = true;
+        HansenLockImg.enabled = true;
+        NguyenLockImg.enabled = true;
+        JaxsonLockImg.enabled = true;
+        WyattLockImg.enabled = true;
+        CaelanLockImg.enabled = true;
+
         coins = playerScript.coins;
     }
 
-    void Update()
-    {
-        
-        
-        
-    }
-
+    
 
 
     //Miguel Loader
     public void PlayMiguel()
     {
-        
-
         if (MiguelLock == false)
         {
             StartCoroutine(LoadSceneWithMiguel());
-            
+            playerScript.isAlive = true;
         }
 
         if (coins >= 1 && MiguelLock == true)
         {
            
-            coins -= 1;
+            coins--;
             MiguelLock = false;
-            purchase = true;
             Debug.Log("purchase success!");
+            playerScript.coins = coins;
             scoreScript.coins = coins;
+            MiguelLockImg.enabled = false;
+
         } else
         {
             Debug.Log("not enough coins or already bought");
             
         }
-
-        
     }
 
     IEnumerator LoadSceneWithMiguel()
@@ -122,7 +134,28 @@ public class CharcterSelectMenu : MonoBehaviour
     //Henry Loader
     public void PlayHenry()
     {
-        StartCoroutine(LoadSceneWithHenry());
+        if (HenryLock == false)
+        {
+            StartCoroutine(LoadSceneWithHenry());
+
+        }
+
+        if (coins >= 1 && HenryLock == true)
+        {
+
+            coins--;
+            HenryLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            HenryLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
 
     }
 
@@ -156,7 +189,28 @@ public class CharcterSelectMenu : MonoBehaviour
     //Brandon Loader
     public void PlayBrandon()
     {
-        StartCoroutine(LoadSceneWithBrandon());
+        if (BrandonLock == false)
+        {
+            StartCoroutine(LoadSceneWithBrandon());
+
+        }
+
+        if (coins >= 1 && BrandonLock == true)
+        {
+
+            coins--;
+            BrandonLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            BrandonLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
 
     }
 
@@ -189,8 +243,28 @@ public class CharcterSelectMenu : MonoBehaviour
 
     public void PlayHansen()
     {
-        StartCoroutine(LoadSceneWithHansen());
+        if (HansenLock == false)
+        {
+            StartCoroutine(LoadSceneWithHansen());
 
+        }
+
+        if (coins >= 1 && HansenLock == true)
+        {
+
+            coins--;
+            HansenLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            HansenLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
     }
 
     IEnumerator LoadSceneWithHansen()
@@ -221,8 +295,28 @@ public class CharcterSelectMenu : MonoBehaviour
 
     public void PlayNguyen()
     {
-        StartCoroutine(LoadSceneWithNguyen());
+        if (NguyenLock == false)
+        {
+            StartCoroutine(LoadSceneWithNguyen());
 
+        }
+
+        if (coins >= 1 && NguyenLock == true)
+        {
+
+            coins--;
+            NguyenLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            NguyenLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
     }
 
     IEnumerator LoadSceneWithNguyen()
@@ -253,8 +347,28 @@ public class CharcterSelectMenu : MonoBehaviour
 
     public void PlayJaxson()
     {
-        StartCoroutine(LoadSceneWithJaxson());
+        if (JaxsonLock == false)
+        {
+            StartCoroutine(LoadSceneWithJaxson());
 
+        }
+
+        if (coins >= 1 && JaxsonLock == true)
+        {
+
+            coins--;
+            JaxsonLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            JaxsonLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
     }
 
     IEnumerator LoadSceneWithJaxson()
@@ -285,8 +399,28 @@ public class CharcterSelectMenu : MonoBehaviour
 
     public void PlayCaelan()
     {
-        StartCoroutine(LoadSceneWithCaelan());
+        if (CaelanLock == false)
+        {
+            StartCoroutine(LoadSceneWithCaelan());
 
+        }
+
+        if (coins >= 1 && CaelanLock == true)
+        {
+
+            coins--;
+            CaelanLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            CaelanLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
     }
 
     IEnumerator LoadSceneWithCaelan()
@@ -315,4 +449,55 @@ public class CharcterSelectMenu : MonoBehaviour
         Instantiate(Score);
     }
 
+    public void PlayWyatt()
+    {
+        if (WyattLock == false)
+        {
+            StartCoroutine(LoadSceneWithWyatt());
+
+        }
+
+        if (coins >= 1 && WyattLock == true)
+        {
+
+            coins--;
+            WyattLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            WyattLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
+    }
+
+    IEnumerator LoadSceneWithWyatt()
+    {
+        // Set the current Scene to be able to unload it later
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
+
+        // Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        SceneManager.MoveGameObjectToScene(WyattPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+        // Unload the previous Scene
+        SceneManager.UnloadSceneAsync(currentScene);
+
+        // Instantiates the Prefab as a GameObject
+        Instantiate(WyattPlayer);
+        Instantiate(Score);
+    }
 }
