@@ -7,6 +7,8 @@ public class CharcterSelectMenu : MonoBehaviour
 {
     //Game
     ScoreScript scoreScript;
+    PlayerScript playerScript;
+
 
     public string MangoMayhem;
 
@@ -23,6 +25,7 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject NguyenPlayer;
     public GameObject JaxsonPlayer;
     public GameObject WyattPlayer;
+    public GameObject CaelanPlayer;
 
     //Character Lock
     public bool MiguelLock;
@@ -33,10 +36,12 @@ public class CharcterSelectMenu : MonoBehaviour
     public bool JaxsonLock;
     public bool WyattLock;
     public bool purchase;
+    public bool CaelanLock;
 
     void Start()
     {
         scoreScript = GameObject.FindGameObjectWithTag("Coins").GetComponent<ScoreScript>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
 
         //Lock All Skins
         HenryLock = true;
@@ -46,8 +51,9 @@ public class CharcterSelectMenu : MonoBehaviour
         JaxsonLock = true;
         WyattLock = true;
         MiguelLock = true;
+        CaelanLock = true;
 
-        coins = scoreScript.coins;
+        coins = playerScript.coins;
     }
 
     void Update()
@@ -73,18 +79,18 @@ public class CharcterSelectMenu : MonoBehaviour
         if (coins >= 1 && MiguelLock == true)
         {
            
-            scoreScript.coins -= 1;
+            coins -= 1;
             MiguelLock = false;
             purchase = true;
             Debug.Log("purchase success!");
-            //scoreScript.coins = coins;
+            scoreScript.coins = coins;
         } else
         {
             Debug.Log("not enough coins or already bought");
             
         }
 
-        coins = scoreScript.coins;
+        
     }
 
     IEnumerator LoadSceneWithMiguel()
@@ -277,13 +283,13 @@ public class CharcterSelectMenu : MonoBehaviour
         Instantiate(Score);
     }
 
-    public void PlayWyatt()
+    public void PlayCaelan()
     {
-        StartCoroutine(LoadSceneWithWyatt());
+        StartCoroutine(LoadSceneWithCaelan());
 
     }
 
-    IEnumerator LoadSceneWithWyatt()
+    IEnumerator LoadSceneWithCaelan()
     {
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
@@ -298,14 +304,15 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(WyattPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(CaelanPlayer, SceneManager.GetSceneByName(MangoMayhem));
         SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
         // Instantiates the Prefab as a GameObject
-        Instantiate(WyattPlayer);
+        Instantiate(CaelanPlayer);
         Instantiate(Score);
     }
+
 }
