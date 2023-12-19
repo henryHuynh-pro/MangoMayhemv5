@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class CharcterSelectMenu : MonoBehaviour
 {
@@ -74,6 +75,8 @@ public class CharcterSelectMenu : MonoBehaviour
         CaelanLockImg.enabled = true;
 
         coins = playerScript.coins;
+
+        
     }
 
     
@@ -86,6 +89,7 @@ public class CharcterSelectMenu : MonoBehaviour
         {
             StartCoroutine(LoadSceneWithMiguel());
             playerScript.isAlive = true;
+            Time.timeScale = 1;
         }
 
         if (coins >= 1 && MiguelLock == true)
@@ -109,6 +113,7 @@ public class CharcterSelectMenu : MonoBehaviour
     {
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+        MiguelPlayer = GameObject.Find("MiguelPlayer");
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -192,7 +197,8 @@ public class CharcterSelectMenu : MonoBehaviour
         if (BrandonLock == false)
         {
             StartCoroutine(LoadSceneWithBrandon());
-
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
         }
 
         if (coins >= 1 && BrandonLock == true)
@@ -246,7 +252,8 @@ public class CharcterSelectMenu : MonoBehaviour
         if (HansenLock == false)
         {
             StartCoroutine(LoadSceneWithHansen());
-
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
         }
 
         if (coins >= 1 && HansenLock == true)
@@ -298,7 +305,8 @@ public class CharcterSelectMenu : MonoBehaviour
         if (NguyenLock == false)
         {
             StartCoroutine(LoadSceneWithNguyen());
-
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
         }
 
         if (coins >= 1 && NguyenLock == true)
@@ -350,7 +358,8 @@ public class CharcterSelectMenu : MonoBehaviour
         if (JaxsonLock == false)
         {
             StartCoroutine(LoadSceneWithJaxson());
-
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
         }
 
         if (coins >= 1 && JaxsonLock == true)
@@ -402,7 +411,8 @@ public class CharcterSelectMenu : MonoBehaviour
         if (CaelanLock == false)
         {
             StartCoroutine(LoadSceneWithCaelan());
-
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
         }
 
         if (coins >= 1 && CaelanLock == true)
@@ -454,7 +464,8 @@ public class CharcterSelectMenu : MonoBehaviour
         if (WyattLock == false)
         {
             StartCoroutine(LoadSceneWithWyatt());
-
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
         }
 
         if (coins >= 1 && WyattLock == true)

@@ -51,8 +51,8 @@ public class RunButtons : MonoBehaviour
 
 
         SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
+        Destroy(GameObject.FindWithTag("Player"));
 
-        
         SceneManager.UnloadSceneAsync(currentScene);
 
         Instantiate(Coins);
