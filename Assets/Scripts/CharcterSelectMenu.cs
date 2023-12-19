@@ -28,6 +28,7 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject JaxsonPlayer;
     public GameObject WyattPlayer;
     public GameObject CaelanPlayer;
+    public GameObject ConnerPlayer;
 
     //Player Locks
     public Image MiguelLockImg;
@@ -38,6 +39,7 @@ public class CharcterSelectMenu : MonoBehaviour
     public Image JaxsonLockImg;
     public Image WyattLockImg;
     public Image CaelanLockImg;
+    public Image ConnerLockImg;
 
     //Character Lock
     public bool MiguelLock;
@@ -48,6 +50,7 @@ public class CharcterSelectMenu : MonoBehaviour
     public bool JaxsonLock;
     public bool WyattLock;
     public bool CaelanLock;
+    public bool ConnerLock;
 
     void Start()
     {
@@ -63,6 +66,7 @@ public class CharcterSelectMenu : MonoBehaviour
         WyattLock = true;
         MiguelLock = true;
         CaelanLock = true;
+        ConnerLock = true;
 
         //Lock All Images
         MiguelLockImg.enabled = true;
@@ -73,6 +77,7 @@ public class CharcterSelectMenu : MonoBehaviour
         JaxsonLockImg.enabled = true;
         WyattLockImg.enabled = true;
         CaelanLockImg.enabled = true;
+        ConnerLockImg.enabled = true;
 
         coins = playerScript.coins;
 
@@ -509,6 +514,59 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Instantiates the Prefab as a GameObject
         Instantiate(WyattPlayer);
+        Instantiate(Score);
+    }
+
+    public void PlayConner()
+    {
+        if (ConnerLock == false)
+        {
+            StartCoroutine(LoadSceneWithConner());
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
+        }
+
+        if (coins >= 1 && ConnerLock == true)
+        {
+
+            coins--;
+            ConnerLock = false;
+            Debug.Log("purchase success!");
+            playerScript.coins = coins;
+            scoreScript.coins = coins;
+            ConnerLockImg.enabled = false;
+
+        }
+        else
+        {
+            Debug.Log("not enough coins or already bought");
+
+        }
+    }
+
+    IEnumerator LoadSceneWithConner()
+    {
+        // Set the current Scene to be able to unload it later
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
+
+        // Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        SceneManager.MoveGameObjectToScene(ConnerPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+        // Unload the previous Scene
+        SceneManager.UnloadSceneAsync(currentScene);
+
+        // Instantiates the Prefab as a GameObject
+        Instantiate(ConnerPlayer);
         Instantiate(Score);
     }
 }
