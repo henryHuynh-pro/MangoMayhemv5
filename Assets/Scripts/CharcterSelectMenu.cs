@@ -93,6 +93,9 @@ public class CharcterSelectMenu : MonoBehaviour
         if (MiguelLock == false)
         {
             StartCoroutine(LoadSceneWithMiguel());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
         }
@@ -118,7 +121,7 @@ public class CharcterSelectMenu : MonoBehaviour
     {
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
-        MiguelPlayer = GameObject.Find("MiguelPlayer");
+        
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -135,6 +138,7 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
+        
 
         // Instantiates the Prefab as a GameObject
         Instantiate(MiguelPlayer);

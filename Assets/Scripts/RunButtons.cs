@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class RunButtons : MonoBehaviour
 {
+    PlayerScript playerScript;
+    CharcterSelectMenu characterSelectMenu;
+
+
     public string Menu;
 
     public bool stopScore;
@@ -15,6 +19,9 @@ public class RunButtons : MonoBehaviour
     void Start()
     {
         stopScore = false;
+
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        characterSelectMenu = GameObject.FindGameObjectWithTag("characterMenu").GetComponent<CharcterSelectMenu>();
     }
 
     public void Quit()
@@ -24,7 +31,9 @@ public class RunButtons : MonoBehaviour
 
         StartCoroutine(MoveScoreToMenu());
         stopScore = true;
-        
+
+        //string currentSceneName = SceneManager.GetActiveScene().name;
+        //SceneManager.LoadScene(currentSceneName);
     }
 
     public void Retry()
@@ -40,8 +49,9 @@ public class RunButtons : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
 
 
+        SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu);
 
         while (!asyncLoad.isDone)
         {
@@ -50,8 +60,11 @@ public class RunButtons : MonoBehaviour
 
 
 
-        SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
-        Destroy(GameObject.FindWithTag("Player"));
+        //SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
+
+        
+
+        //Destroy(GameObject.FindWithTag("Player"));
 
         SceneManager.UnloadSceneAsync(currentScene);
 

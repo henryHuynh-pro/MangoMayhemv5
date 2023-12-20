@@ -14,5 +14,6 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("This is a quit game button im just to lazy to code it in XD");
         Application.Quit();
+        
     }
 }
