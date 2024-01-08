@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerScript : MonoBehaviour
 {
     CharcterSelectMenu characterSelectMenu;
+    RunButtons runButtons;
 
     public float CurrentJumpValue = 1;
     public float JumpValue;
@@ -29,6 +30,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         characterSelectMenu = GameObject.FindGameObjectWithTag("characterMenu").GetComponent<CharcterSelectMenu>();
+        runButtons = GameObject.FindGameObjectWithTag("runButtons").GetComponent<RunButtons>();
+
         anim = GetComponent<Animator>();
         anim.SetBool("Grounded", true);
         anim.SetInteger("Height", 0);
@@ -41,7 +44,7 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
-        score = 0;
+        
 
 
     }
@@ -56,7 +59,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         //Reset Jump Value and Run Anim
-        if (OnGround == true)
+        if (OnGround == true && isAlive == true)
         {
             usedFirstJump = false;
             CurrentJumpValue = JumpValue;
@@ -89,9 +92,7 @@ public class PlayerScript : MonoBehaviour
         
         if (isAlive)
         {
-           
-           
-          // Debug.Log("SCORE:" + score.ToString("F"));
+            runButtons.isAlive = true;
         }
 
        
@@ -109,13 +110,17 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("spike"))
         {
             isAlive = false;
-            Time.timeScale = 0;
+            runButtons.isAlive = false;
+            //Time.timeScale = 0;
+
         }
 
         if (collision.gameObject.CompareTag("Dexter"))
         {
             isAlive = false;
-            Time.timeScale = 0;
+            runButtons.isAlive = false;
+            //Time.timeScale = 0;
+
         }
 
         if (collision.gameObject.CompareTag("Coin"))

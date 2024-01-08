@@ -58,6 +58,9 @@ public class CharcterSelectMenu : MonoBehaviour
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
 
         //Lock All Skins
+
+
+
         HenryLock = true;
         BrandonLock = true;
         HansenLock = true;
@@ -109,6 +112,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             MiguelLockImg.enabled = false;
+            scoreScript.MiguelLock = false;
 
         } else
         {
@@ -142,6 +146,7 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Instantiates the Prefab as a GameObject
         Instantiate(MiguelPlayer);
+        
         Instantiate(Score);
     }
 
