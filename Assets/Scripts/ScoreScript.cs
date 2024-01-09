@@ -15,6 +15,19 @@ public class ScoreScript : MonoBehaviour
     public float score;
     public float coins;
 
+
+    public bool MiguelLock;
+    public bool HenryLock;
+    public bool BrandonLock;
+    public bool HansenLock;
+    public bool NguyenLock;
+    public bool JaxsonLock;
+    public bool WyattLock;
+    public bool CaelanLock;
+    public bool ConnerLock;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +35,7 @@ public class ScoreScript : MonoBehaviour
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         runButtons = GameObject.FindGameObjectWithTag("runButtons").GetComponent<RunButtons>();
         characterSelectMenu = GameObject.FindGameObjectWithTag("characterMenu").GetComponent<CharcterSelectMenu>();
+        coins = characterSelectMenu.coins;
     }
 
     // Update is called once per frame
