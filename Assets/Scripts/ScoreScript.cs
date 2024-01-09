@@ -26,6 +26,8 @@ public class ScoreScript : MonoBehaviour
     public bool CaelanLock;
     public bool ConnerLock;
 
+    public float PlayerSelected;
+
 
 
     // Start is called before the first frame update
@@ -42,10 +44,7 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         coinText.text = "COINS " + coins;
-        
-        
         coins = characterSelectMenu.coins;
-        
 
         if(playerScript.coins >= coins)
         {

@@ -498,7 +498,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2001532288}
         m_TargetAssemblyTypeName: RunButtons, Assembly-CSharp
-        m_MethodName: DeadMenu
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -914,7 +914,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2001532288}
         m_TargetAssemblyTypeName: RunButtons, Assembly-CSharp
-        m_MethodName: DeadRetry
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1770,7 +1770,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1696272796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2001532288}
+        m_TargetAssemblyTypeName: RunButtons, Assembly-CSharp
+        m_MethodName: Retry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1696272796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,6 +2550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: Menu
+  MangoMayhem: 
   stopScore: 0
   isAlive: 0
   Coins: {fileID: 9009398505752278550, guid: 320b752935e70ae44aca75575596d594, type: 3}

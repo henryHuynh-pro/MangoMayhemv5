@@ -95,12 +95,14 @@ public class CharcterSelectMenu : MonoBehaviour
     {
         if (MiguelLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithMiguel());
             //string currentSceneName = SceneManager.GetActiveScene().name;
             //SceneManager.LoadScene(currentSceneName);
 
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && MiguelLock == true)
