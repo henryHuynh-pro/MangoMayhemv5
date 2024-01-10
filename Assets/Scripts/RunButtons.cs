@@ -18,7 +18,8 @@ public class RunButtons : MonoBehaviour
     public GameObject Coins;
     public GameObject GameOver;
     public GameObject Running;
-    public GameObject CurrentPlayer;
+
+    public int CurrentPlayer;
 
     void Start()
     {
@@ -57,7 +58,11 @@ public class RunButtons : MonoBehaviour
 
     public void Retry()
     {
-        CurrentPlayer = GameObject.FindGameObjectWithTag("Player");
+        CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetHashCode();
+
+        Debug.Log(CurrentPlayer);
+
+
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         StartCoroutine(RetryGame());
     }
@@ -100,8 +105,7 @@ public class RunButtons : MonoBehaviour
 
 
         //SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetSceneByName(MangoMayhem));
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.MoveGameObjectToScene(CurrentPlayer, SceneManager.GetActiveScene());
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 
 
         while (!asyncLoad.isDone)
@@ -109,7 +113,7 @@ public class RunButtons : MonoBehaviour
             yield return null;
         }
 
-        
+        //SceneManager.MoveGameObjectToScene(CurrentPlayer, SceneManager.GetSceneByName(MangoMayhem));
 
 
         Time.timeScale = 1;
