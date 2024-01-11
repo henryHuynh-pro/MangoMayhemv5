@@ -10,6 +10,7 @@ public class RunButtons : MonoBehaviour
 
 
     public string Menu;
+    public string MangoMayhem;
 
     public bool stopScore;
     public bool isAlive;
@@ -17,6 +18,8 @@ public class RunButtons : MonoBehaviour
     public GameObject Coins;
     public GameObject GameOver;
     public GameObject Running;
+
+    public int CurrentPlayer;
 
     void Start()
     {
@@ -44,43 +47,28 @@ public class RunButtons : MonoBehaviour
             Running.SetActive(false);
         }
 
-        /*if (playerScript.isAlive == true)
-        {
-            GameOver.SetActive(false);
-            Running.SetActive(true);
-        }*/
+       
     }
 
     public void Quit()
     {
-        //ScoreCounter = GameObject.FindGameObjectWithTag("CoinCounter");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-
-        StartCoroutine(MoveScoreToMenu());
+        StartCoroutine(ReturnToMenu());
         stopScore = true;
-
-        //string currentSceneName = SceneManager.GetActiveScene().name;
-        //SceneManager.LoadScene(currentSceneName);
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetHashCode();
+
+        Debug.Log(CurrentPlayer);
 
 
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        StartCoroutine(RetryGame());
     }
 
-    public void DeadRetry()
-    {
 
-    }
-
-    public void DeadMenu()
-    {
-        StartCoroutine(MoveScoreToMenu());
-    }
-
-    IEnumerator MoveScoreToMenu()
+    IEnumerator ReturnToMenu()
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -98,6 +86,35 @@ public class RunButtons : MonoBehaviour
 
         //SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
         SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
+
+        Time.timeScale = 1;
+
+        //Destroy(GameObject.FindWithTag("Player"));
+
+        SceneManager.UnloadSceneAsync(currentScene);
+
+        Instantiate(Coins);
+
+    }
+
+    IEnumerator RetryGame()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        isAlive = true;
+
+
+        //SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetSceneByName(MangoMayhem));
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        //SceneManager.MoveGameObjectToScene(CurrentPlayer, SceneManager.GetSceneByName(MangoMayhem));
+
 
         Time.timeScale = 1;
 
