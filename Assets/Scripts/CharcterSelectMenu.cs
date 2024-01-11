@@ -17,9 +17,11 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject Score;
 
     public float coins;
-    
+
 
     //Players For Run Game
+    
+
     public GameObject MiguelPlayer;
     public GameObject HenryPlayer;
     public GameObject BrandonPlayer;

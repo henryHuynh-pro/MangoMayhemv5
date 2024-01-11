@@ -14,6 +14,7 @@ public class RunButtons : MonoBehaviour
 
     public bool stopScore;
     public bool isAlive;
+    public bool test;
 
     public GameObject Coins;
     public GameObject GameOver;
@@ -52,30 +53,41 @@ public class RunButtons : MonoBehaviour
 
     public void Quit()
     {
+        //StartCoroutine(FunkyThing());
         StartCoroutine(ReturnToMenu());
         stopScore = true;
     }
 
     public void Retry()
     {
-        CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetHashCode();
+        //CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetHashCode();
 
-        Debug.Log(CurrentPlayer);
+        //Debug.Log(CurrentPlayer);
 
+        test = true;
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        StartCoroutine(RetryGame());
+        Invoke("Invinciblility", 2);
+
     }
 
+    public void Invinciblility()
+    {
+        test = false;
+    }
 
     IEnumerator ReturnToMenu()
     {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         Scene currentScene = SceneManager.GetActiveScene();
 
         isAlive = true;
+
         
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Single);
 
         while (!asyncLoad.isDone)
         {
@@ -91,15 +103,19 @@ public class RunButtons : MonoBehaviour
 
         //Destroy(GameObject.FindWithTag("Player"));
 
+        //SceneManager.UnloadSceneAsync(currentScene);
         SceneManager.UnloadSceneAsync(currentScene);
+
 
         Instantiate(Coins);
 
     }
 
-    IEnumerator RetryGame()
+    
+
+    IEnumerator FunkyThing()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
+        //Scene currentScene = SceneManager.GetActiveScene();
 
         isAlive = true;
 
@@ -120,9 +136,9 @@ public class RunButtons : MonoBehaviour
 
         //Destroy(GameObject.FindWithTag("Player"));
 
-        SceneManager.UnloadSceneAsync(currentScene);
+        //SceneManager.UnloadSceneAsync(currentScene);
 
-        Instantiate(Coins);
+        
 
     }
 }

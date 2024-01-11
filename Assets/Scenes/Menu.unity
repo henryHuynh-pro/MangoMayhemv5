@@ -4235,7 +4235,7 @@ MonoBehaviour:
   MangoMayhem: MangoMayhem
   Score: {fileID: 9009398505752278550, guid: 320b752935e70ae44aca75575596d594, type: 3}
   coins: 5
-  MiguelPlayer: {fileID: 364125772878150815, guid: 342ca18541e4ba146b4f510ce21b7988, type: 3}
+  MiguelPlayer: {fileID: 2098578238254662127, guid: 824b0b3720ce2c541816ba9896d9e98c, type: 3}
   HenryPlayer: {fileID: 0}
   BrandonPlayer: {fileID: 7990567393459978235, guid: 71c94300eaa8a1845891f1da50ad3ef0, type: 3}
   HansenPlayer: {fileID: 3876228509299023886, guid: 7af44c0a5d0ccf34a941471489b803e0, type: 3}

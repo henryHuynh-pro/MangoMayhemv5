@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     public bool isAlive;
     public bool collectedCoin;
     public bool usedFirstJump;
+    public bool test;
 
     Animator anim;
 
@@ -98,6 +99,8 @@ public class PlayerScript : MonoBehaviour
        
         
     }
+
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
