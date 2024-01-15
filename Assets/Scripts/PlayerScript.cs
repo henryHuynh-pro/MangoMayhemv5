@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("Grounded", true);
         }
 
-        if (collision.gameObject.CompareTag("spike"))
+        if (collision.gameObject.CompareTag("spike") && runButtons.test == false)
         {
             isAlive = false;
             runButtons.isAlive = false;
@@ -118,7 +118,7 @@ public class PlayerScript : MonoBehaviour
 
         }
 
-        if (collision.gameObject.CompareTag("Dexter"))
+        if (collision.gameObject.CompareTag("Dexter") && runButtons.test == false)
         {
             isAlive = false;
             runButtons.isAlive = false;

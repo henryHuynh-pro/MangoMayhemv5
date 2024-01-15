@@ -53,7 +53,7 @@ public class RunButtons : MonoBehaviour
 
     public void Quit()
     {
-        //StartCoroutine(FunkyThing());
+        //SceneManager.Load(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         StartCoroutine(ReturnToMenu());
         stopScore = true;
     }
@@ -63,22 +63,27 @@ public class RunButtons : MonoBehaviour
         //CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetHashCode();
 
         //Debug.Log(CurrentPlayer);
+        isAlive = true;
+        playerScript.isAlive = true;
+
+        GameOver.SetActive(false);
+        Running.SetActive(true);
 
         test = true;
-
+        //playerScript.isAlive = true;
         Invoke("Invinciblility", 2);
 
-    }
 
-    public void Invinciblility()
-    {
-        test = false;
+
     }
 
     IEnumerator ReturnToMenu()
     {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        
+        
 
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -87,14 +92,14 @@ public class RunButtons : MonoBehaviour
         
 
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Single);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
 
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
 
-        Destroy(GameObject.FindWithTag("Player"));
+        //Destroy(GameObject.FindWithTag("Player"));
 
         //SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
         SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
@@ -104,7 +109,7 @@ public class RunButtons : MonoBehaviour
         //Destroy(GameObject.FindWithTag("Player"));
 
         //SceneManager.UnloadSceneAsync(currentScene);
-        SceneManager.UnloadSceneAsync(currentScene);
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(MangoMayhem));
 
 
         Instantiate(Coins);
