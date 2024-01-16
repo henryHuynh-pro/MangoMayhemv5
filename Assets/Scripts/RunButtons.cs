@@ -54,7 +54,11 @@ public class RunButtons : MonoBehaviour
     public void Quit()
     {
         //SceneManager.Load(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        StartCoroutine(ReturnToMenu());
+        //StartCoroutine(ReLoadScene());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+      //StartCoroutine(ReturnToMenu());
         stopScore = true;
     }
 
@@ -80,10 +84,9 @@ public class RunButtons : MonoBehaviour
     IEnumerator ReturnToMenu()
     {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
 
-        
-        
+
 
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -94,22 +97,24 @@ public class RunButtons : MonoBehaviour
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
 
+        SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
+
         while (!asyncLoad.isDone)
         {
+            SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
             yield return null;
         }
 
         //Destroy(GameObject.FindWithTag("Player"));
 
-        //SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
-        SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
+        
 
         Time.timeScale = 1;
 
-        //Destroy(GameObject.FindWithTag("Player"));
+        Destroy(GameObject.FindWithTag("Player"));
 
-        //SceneManager.UnloadSceneAsync(currentScene);
-        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.UnloadSceneAsync(currentScene);
+        //SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(MangoMayhem));
 
 
         Instantiate(Coins);
@@ -118,32 +123,15 @@ public class RunButtons : MonoBehaviour
 
     
 
-    IEnumerator FunkyThing()
+    IEnumerator ReLoadScene()
     {
-        //Scene currentScene = SceneManager.GetActiveScene();
+        AsyncOperation asyncReLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 
-        isAlive = true;
-
-
-        //SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetSceneByName(MangoMayhem));
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-
-
-        while (!asyncLoad.isDone)
+        while (!asyncReLoad.isDone)
         {
             yield return null;
         }
 
-        //SceneManager.MoveGameObjectToScene(CurrentPlayer, SceneManager.GetSceneByName(MangoMayhem));
-
-
-        Time.timeScale = 1;
-
-        //Destroy(GameObject.FindWithTag("Player"));
-
-        //SceneManager.UnloadSceneAsync(currentScene);
-
-        
 
     }
 }

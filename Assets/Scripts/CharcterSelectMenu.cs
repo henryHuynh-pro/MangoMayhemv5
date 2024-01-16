@@ -54,6 +54,9 @@ public class CharcterSelectMenu : MonoBehaviour
     public bool CaelanLock;
     public bool ConnerLock;
 
+
+    
+
     void Start()
     {
         scoreScript = GameObject.FindGameObjectWithTag("Coins").GetComponent<ScoreScript>();
