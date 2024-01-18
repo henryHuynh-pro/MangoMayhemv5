@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     public bool isAlive;
     public bool collectedCoin;
     public bool usedFirstJump;
+    public bool test;
 
     Animator anim;
 
@@ -99,6 +100,8 @@ public class PlayerScript : MonoBehaviour
         
     }
 
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ground"))
@@ -107,7 +110,7 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("Grounded", true);
         }
 
-        if (collision.gameObject.CompareTag("spike"))
+        if (collision.gameObject.CompareTag("spike") && runButtons.test == false)
         {
             isAlive = false;
             runButtons.isAlive = false;
@@ -115,7 +118,7 @@ public class PlayerScript : MonoBehaviour
 
         }
 
-        if (collision.gameObject.CompareTag("Dexter"))
+        if (collision.gameObject.CompareTag("Dexter") && runButtons.test == false)
         {
             isAlive = false;
             runButtons.isAlive = false;

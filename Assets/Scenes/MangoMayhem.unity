@@ -956,7 +956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &865303458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1815,7 +1815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696272794
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2662,10 +2662,11 @@ MonoBehaviour:
   MangoMayhem: MangoMayhem
   stopScore: 0
   isAlive: 0
+  test: 0
   Coins: {fileID: 9009398505752278550, guid: 320b752935e70ae44aca75575596d594, type: 3}
   GameOver: {fileID: 983928642}
   Running: {fileID: 1764199296}
-  CurrentPlayer: {fileID: 0}
+  CurrentPlayer: 0
 --- !u!1 &2017864580
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,6 +3080,4 @@ SceneRoots:
   - {fileID: 122503910}
   - {fileID: 1863182119}
   - {fileID: 1382329047}
-  - {fileID: 1684619579}
-  - {fileID: 1414940287}
-  - {fileID: 1925508691}
+  - {fileID: 29645998}
