@@ -19,8 +19,8 @@ public class RunButtons : MonoBehaviour
     public GameObject Coins;
     public GameObject GameOver;
     public GameObject Running;
-
-    public int CurrentPlayer;
+    public GameObject Score;
+    
 
     void Start()
     {
@@ -53,12 +53,21 @@ public class RunButtons : MonoBehaviour
 
     public void Quit()
     {
-        //SceneManager.Load(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        //StartCoroutine(ReLoadScene());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        /*Scene currentScene = SceneManager.GetActiveScene();
+
+        Destroy(GameObject.FindWithTag("Player"));
+
+        SceneManager.LoadScene(Menu, LoadSceneMode.Additive);
+
+        SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));*/
 
 
-      //StartCoroutine(ReturnToMenu());
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        //Destroy(GameObject.FindWithTag("Player"));
+
+        StartCoroutine(QuitGame());
         stopScore = true;
     }
 
@@ -84,9 +93,10 @@ public class RunButtons : MonoBehaviour
     IEnumerator ReturnToMenu()
     {
 
+        Destroy(GameObject.FindWithTag("Player"));
         
 
-
+        GameObject CurrentPlayer = GameObject.FindGameObjectWithTag("Player");
 
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -95,42 +105,58 @@ public class RunButtons : MonoBehaviour
         
 
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
+        SceneManager.LoadScene(Menu);
 
-        SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
-
-        while (!asyncLoad.isDone)
-        {
-            SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
-            yield return null;
-        }
-
-        //Destroy(GameObject.FindWithTag("Player"));
-
+      
         
+        SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
+        //SceneManager.MoveGameObjectToScene(CurrentPlayer, SceneManager.GetSceneByName(Menu));
+        
+        
+        
+
+
 
         Time.timeScale = 1;
 
-        Destroy(GameObject.FindWithTag("Player"));
+        //Destroy(GameObject.FindWithTag("Player"));
 
-        SceneManager.UnloadSceneAsync(currentScene);
+        SceneManager.UnloadScene(currentScene);
         //SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(MangoMayhem));
 
 
-        Instantiate(Coins);
 
-    }
-
-    
-
-    IEnumerator ReLoadScene()
-    {
         AsyncOperation asyncReLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 
+        Instantiate(Coins);
         while (!asyncReLoad.isDone)
         {
             yield return null;
         }
+    }
+
+    
+
+    IEnumerator QuitGame()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        //Destroy(GameObject.FindWithTag("Player"));
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
+
+        SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));
+        SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Player"), SceneManager.GetSceneByName(Menu));
+
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        //SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));
+
+        SceneManager.UnloadSceneAsync(currentScene);
 
 
     }
