@@ -105,6 +105,8 @@ public class CharcterSelectMenu : MonoBehaviour
             //string currentSceneName = SceneManager.GetActiveScene().name;
             //SceneManager.LoadScene(currentSceneName);
 
+            
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
 
@@ -130,6 +132,7 @@ public class CharcterSelectMenu : MonoBehaviour
 
     IEnumerator LoadSceneWithMiguel()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
         
@@ -145,7 +148,7 @@ public class CharcterSelectMenu : MonoBehaviour
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
         SceneManager.MoveGameObjectToScene(MiguelPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+        SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);

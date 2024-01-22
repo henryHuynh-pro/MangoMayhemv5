@@ -249,6 +249,7 @@ MonoBehaviour:
   isAlive: 1
   collectedCoin: 0
   usedFirstJump: 0
+  test: 0
   RB: {fileID: 0}
 --- !u!95 &3845743689799748941
 Animator:
