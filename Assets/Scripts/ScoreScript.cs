@@ -17,7 +17,6 @@ public class ScoreScript : MonoBehaviour
 
 
     public bool MiguelLock;
-    public bool HenryLock;
     public bool BrandonLock;
     public bool HansenLock;
     public bool NguyenLock;
@@ -25,6 +24,8 @@ public class ScoreScript : MonoBehaviour
     public bool WyattLock;
     public bool CaelanLock;
     public bool ConnerLock;
+    public bool IraLock;
+    public bool RobertLock;
 
     public float PlayerSelected;
 

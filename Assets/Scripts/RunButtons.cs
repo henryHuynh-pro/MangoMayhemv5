@@ -146,7 +146,7 @@ public class RunButtons : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
 
         SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));
-        SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Player"), SceneManager.GetSceneByName(Menu));
+        //SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Player"), SceneManager.GetSceneByName(Menu));
 
 
         while (!asyncLoad.isDone)
@@ -154,10 +154,14 @@ public class RunButtons : MonoBehaviour
             yield return null;
         }
 
+        
+
+
         //SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));
 
         SceneManager.UnloadSceneAsync(currentScene);
 
+        //SceneManager.LoadScene(MangoMayhem, LoadSceneMode.Additive);
 
     }
 }

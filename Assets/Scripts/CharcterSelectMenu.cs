@@ -23,7 +23,6 @@ public class CharcterSelectMenu : MonoBehaviour
     
 
     public GameObject MiguelPlayer;
-    public GameObject HenryPlayer;
     public GameObject BrandonPlayer;
     public GameObject HansenPlayer;
     public GameObject NguyenPlayer;
@@ -31,10 +30,11 @@ public class CharcterSelectMenu : MonoBehaviour
     public GameObject WyattPlayer;
     public GameObject CaelanPlayer;
     public GameObject ConnerPlayer;
+    public GameObject IraPlayer;
+    public GameObject RobertPlayer;
 
     //Player Locks
     public Image MiguelLockImg;
-    public Image HenryLockImg;
     public Image BrandonLockImg;
     public Image HansenLockImg;
     public Image NguyenLockImg;
@@ -42,10 +42,11 @@ public class CharcterSelectMenu : MonoBehaviour
     public Image WyattLockImg;
     public Image CaelanLockImg;
     public Image ConnerLockImg;
+    public Image IraLockImg;
+    public Image RobertLockImg;
 
     //Character Lock
     public bool MiguelLock;
-    public bool HenryLock;
     public bool BrandonLock;
     public bool HansenLock;
     public bool NguyenLock;
@@ -53,9 +54,9 @@ public class CharcterSelectMenu : MonoBehaviour
     public bool WyattLock;
     public bool CaelanLock;
     public bool ConnerLock;
+    public bool IraLock;
+    public bool RobertLock;
 
-
-    
 
     void Start()
     {
@@ -63,10 +64,6 @@ public class CharcterSelectMenu : MonoBehaviour
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
 
         //Lock All Skins
-
-
-
-        HenryLock = true;
         BrandonLock = true;
         HansenLock = true;
         NguyenLock = true;
@@ -75,10 +72,11 @@ public class CharcterSelectMenu : MonoBehaviour
         MiguelLock = true;
         CaelanLock = true;
         ConnerLock = true;
+        IraLock = true;
+        RobertLock = true;
 
         //Lock All Images
         MiguelLockImg.enabled = true;
-        HenryLockImg.enabled = true;
         BrandonLockImg.enabled = true;
         HansenLockImg.enabled = true;
         NguyenLockImg.enabled = true;
@@ -86,6 +84,8 @@ public class CharcterSelectMenu : MonoBehaviour
         WyattLockImg.enabled = true;
         CaelanLockImg.enabled = true;
         ConnerLockImg.enabled = true;
+        IraLockImg.enabled = true;
+        RobertLockImg.enabled = true;
 
         coins = playerScript.coins;
 
@@ -147,37 +147,48 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(MiguelPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(MangoMayhem));
+        
+
+        PrefabUtility.InstantiatePrefab(MiguelPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
         
 
         // Instantiates the Prefab as a GameObject
-        Instantiate(MiguelPlayer);
+        //Instantiate(MiguelPlayer);
         
         Instantiate(Score);
     }
 
-    //Henry Loader
-    public void PlayHenry()
+    //Ira Loader
+    public void PlayIra()
     {
-        if (HenryLock == false)
+        if (IraLock == false)
         {
-            StartCoroutine(LoadSceneWithHenry());
+            scoreScript.PlayerSelected = 1;
+            StartCoroutine(LoadSceneWithIra());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
+            playerScript.isAlive = true;
+            Time.timeScale = 1;
 
         }
 
-        if (coins >= 1 && HenryLock == true)
+        if (coins >= 1 && IraLock == true)
         {
 
             coins--;
-            HenryLock = false;
+            IraLock = false;
             Debug.Log("purchase success!");
             playerScript.coins = coins;
             scoreScript.coins = coins;
-            HenryLockImg.enabled = false;
+            IraLockImg.enabled = false;
+            scoreScript.IraLock = false;
 
         }
         else
@@ -185,13 +196,14 @@ public class CharcterSelectMenu : MonoBehaviour
             Debug.Log("not enough coins or already bought");
 
         }
-
     }
 
-    IEnumerator LoadSceneWithHenry()
+    IEnumerator LoadSceneWithIra()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -203,14 +215,18 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(HenryPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(IraPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
+
         // Instantiates the Prefab as a GameObject
-        Instantiate(HenryPlayer);
+        //Instantiate(IraPlayer);
+
         Instantiate(Score);
     }
 
@@ -220,9 +236,16 @@ public class CharcterSelectMenu : MonoBehaviour
     {
         if (BrandonLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithBrandon());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && BrandonLock == true)
@@ -234,6 +257,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             BrandonLockImg.enabled = false;
+            scoreScript.BrandonLock = false;
 
         }
         else
@@ -241,13 +265,14 @@ public class CharcterSelectMenu : MonoBehaviour
             Debug.Log("not enough coins or already bought");
 
         }
-
     }
 
     IEnumerator LoadSceneWithBrandon()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -259,25 +284,36 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(BrandonPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(BrandonPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
-        // Instantiates the Prefab as a GameObject
-        Instantiate(BrandonPlayer);
-        Instantiate(Score);
 
+        // Instantiates the Prefab as a GameObject
+        //Instantiate(BrandonPlayer);
+
+        Instantiate(Score);
     }
 
+    //Hansen Loader
     public void PlayHansen()
     {
         if (HansenLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithHansen());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && HansenLock == true)
@@ -289,6 +325,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             HansenLockImg.enabled = false;
+            scoreScript.HansenLock = false;
 
         }
         else
@@ -300,8 +337,10 @@ public class CharcterSelectMenu : MonoBehaviour
 
     IEnumerator LoadSceneWithHansen()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -313,24 +352,36 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(HansenPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(HansenPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
+
         // Instantiates the Prefab as a GameObject
-        Instantiate(HansenPlayer);
+        //Instantiate(HansenPlayer);
+
         Instantiate(Score);
     }
 
+    //Nguyen Loader
     public void PlayNguyen()
     {
         if (NguyenLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithNguyen());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && NguyenLock == true)
@@ -342,6 +393,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             NguyenLockImg.enabled = false;
+            scoreScript.NguyenLock = false;
 
         }
         else
@@ -353,8 +405,10 @@ public class CharcterSelectMenu : MonoBehaviour
 
     IEnumerator LoadSceneWithNguyen()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -366,24 +420,36 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(NguyenPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(NguyenPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
+
         // Instantiates the Prefab as a GameObject
-        Instantiate(NguyenPlayer);
+        //Instantiate(NguyenPlayer);
+
         Instantiate(Score);
     }
 
+    //Jaxson Loader
     public void PlayJaxson()
     {
         if (JaxsonLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithJaxson());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && JaxsonLock == true)
@@ -395,6 +461,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             JaxsonLockImg.enabled = false;
+            scoreScript.JaxsonLock = false;
 
         }
         else
@@ -406,8 +473,10 @@ public class CharcterSelectMenu : MonoBehaviour
 
     IEnumerator LoadSceneWithJaxson()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -419,24 +488,36 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(JaxsonPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(JaxsonPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
+
         // Instantiates the Prefab as a GameObject
-        Instantiate(JaxsonPlayer);
+        //Instantiate(JaxsonPlayer);
+
         Instantiate(Score);
     }
 
+    //Caelan Loader
     public void PlayCaelan()
     {
         if (CaelanLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithCaelan());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && CaelanLock == true)
@@ -448,6 +529,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             CaelanLockImg.enabled = false;
+            scoreScript.CaelanLock = false;
 
         }
         else
@@ -459,8 +541,10 @@ public class CharcterSelectMenu : MonoBehaviour
 
     IEnumerator LoadSceneWithCaelan()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -472,24 +556,36 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(CaelanPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(CaelanPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
+
         // Instantiates the Prefab as a GameObject
-        Instantiate(CaelanPlayer);
+        //Instantiate(CaelanPlayer);
+
         Instantiate(Score);
     }
 
+    //Wyatt Loader
     public void PlayWyatt()
     {
         if (WyattLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithWyatt());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && WyattLock == true)
@@ -501,6 +597,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             WyattLockImg.enabled = false;
+            scoreScript.WyattLock = false;
 
         }
         else
@@ -512,8 +609,10 @@ public class CharcterSelectMenu : MonoBehaviour
 
     IEnumerator LoadSceneWithWyatt()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -525,24 +624,36 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(WyattPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(WyattPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
+
         // Instantiates the Prefab as a GameObject
-        Instantiate(WyattPlayer);
+        //Instantiate(WyattPlayer);
+
         Instantiate(Score);
     }
 
+    //Conner Loader
     public void PlayConner()
     {
         if (ConnerLock == false)
         {
+            scoreScript.PlayerSelected = 1;
             StartCoroutine(LoadSceneWithConner());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+
+
+
             playerScript.isAlive = true;
             Time.timeScale = 1;
+
         }
 
         if (coins >= 1 && ConnerLock == true)
@@ -554,6 +665,7 @@ public class CharcterSelectMenu : MonoBehaviour
             playerScript.coins = coins;
             scoreScript.coins = coins;
             ConnerLockImg.enabled = false;
+            scoreScript.ConnerLock = false;
 
         }
         else
@@ -565,8 +677,10 @@ public class CharcterSelectMenu : MonoBehaviour
 
     IEnumerator LoadSceneWithConner()
     {
+
         // Set the current Scene to be able to unload it later
         Scene currentScene = SceneManager.GetActiveScene();
+
 
         // The Application loads the Scene in the background at the same time as the current Scene.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
@@ -578,14 +692,62 @@ public class CharcterSelectMenu : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
-        SceneManager.MoveGameObjectToScene(ConnerPlayer, SceneManager.GetSceneByName(MangoMayhem));
-        SceneManager.MoveGameObjectToScene(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+
+        PrefabUtility.InstantiatePrefab(ConnerPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
 
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
 
+
         // Instantiates the Prefab as a GameObject
-        Instantiate(ConnerPlayer);
+        //Instantiate(ConnerPlayer);
+
+        Instantiate(Score);
+    }
+
+    //Robert Loader
+    public void PlayRobert()
+    {
+        if (RobertLock == false)
+        {
+            scoreScript.PlayerSelected = 1;
+            StartCoroutine(LoadSceneWithRobert());
+            //string currentSceneName = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(currentSceneName);
+        }
+    }
+
+    IEnumerator LoadSceneWithRobert()
+    {
+
+        // Set the current Scene to be able to unload it later
+        Scene currentScene = SceneManager.GetActiveScene();
+
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(MangoMayhem, LoadSceneMode.Additive);
+
+        // Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+
+
+        PrefabUtility.InstantiatePrefab(RobertPlayer, SceneManager.GetSceneByName(MangoMayhem));
+        PrefabUtility.InstantiatePrefab(Score, SceneManager.GetSceneByName(MangoMayhem));
+
+        // Unload the previous Scene
+        SceneManager.UnloadSceneAsync(currentScene);
+
+
+        // Instantiates the Prefab as a GameObject
+        //Instantiate(RobertPlayer);
+
         Instantiate(Score);
     }
 }
