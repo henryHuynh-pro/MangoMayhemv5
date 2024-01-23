@@ -25,7 +25,9 @@ public class CoinGenerator : MonoBehaviour
 
     void GenerateCoin()
     {
-        GameObject CoinIns = Instantiate(Coin, transform.position, transform.rotation);
+        var randomHeight = Random.Range(5, 8);
+        GameObject CoinIns = Instantiate(Coin, randomHeight, transform.rotation);
+
 
         CoinIns.GetComponent<CoinScript>().CoinGenerator = this;
 
