@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class BackgroundSwitcher : MonoBehaviour
 {
@@ -11,33 +14,35 @@ public class BackgroundSwitcher : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Awake()
     {
-        for (; ; )
-        {
-            int x = Random.Range(0, 3);
-            switch (x)
-            {
-                case 0:
-                    Debug.Log("backgroundA");
-                    break;
-                case 1:
-                    Debug.Log("backgroundB");
-                    break;
-                case 2:
-                    Debug.Log("backgroundC");
-                    break;
-                case 3:
-                    Debug.Log("backgroundD");
-                    break;
-            }
-            
-        }
-    }
+        BackgroundA.SetActive(false);
+        BackgroundB.SetActive(false);
+        BackgroundC.SetActive(false);
+        BackgroundD.SetActive(false);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+            int x = Random.Range(0, 3);
+
+            if (x == 0)
+            {
+                BackgroundA.SetActive(true);
+
+            }
+
+            if (x == 1)
+            {
+                BackgroundB.SetActive(true);
+            }
+
+            if (x == 2)
+            {
+                BackgroundC.SetActive(true);
+            }
+
+        if (x == 3)
+        {
+            BackgroundD.SetActive(true);
+        }
     }
 }
