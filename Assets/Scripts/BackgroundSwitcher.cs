@@ -16,33 +16,28 @@ public class BackgroundSwitcher : MonoBehaviour
     // Start is called before the first frame update
     public void Awake()
     {
-        BackgroundA.SetActive(false);
-        BackgroundB.SetActive(false);
-        BackgroundC.SetActive(false);
-        BackgroundD.SetActive(false);
 
+        int x = Random.Range(0, 4);
+        
 
-            int x = Random.Range(0, 3);
+        if (x == 0)
+        {
+            Instantiate(BackgroundA);
+        }
 
-            if (x == 0)
-            {
-                BackgroundA.SetActive(true);
+        if (x == 1)
+        {
+            Instantiate(BackgroundB);
+        }
 
-            }
-
-            if (x == 1)
-            {
-                BackgroundB.SetActive(true);
-            }
-
-            if (x == 2)
-            {
-                BackgroundC.SetActive(true);
-            }
+        if (x == 2)
+        {
+            Instantiate(BackgroundC);
+        }
 
         if (x == 3)
         {
-            BackgroundD.SetActive(true);
+            Instantiate(BackgroundD);
         }
     }
 }
