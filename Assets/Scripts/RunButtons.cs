@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RunButtons : MonoBehaviour
 {
-    PlayerScript playerScript;
-    CharcterSelectMenu characterSelectMenu;
+
 
 
     public string Menu;
@@ -30,8 +29,7 @@ public class RunButtons : MonoBehaviour
         
         stopScore = false;
 
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        characterSelectMenu = GameObject.FindGameObjectWithTag("characterMenu").GetComponent<CharcterSelectMenu>();
+
     }
 
     public void Update()
@@ -53,115 +51,28 @@ public class RunButtons : MonoBehaviour
 
     public void Quit()
     {
-        /*Scene currentScene = SceneManager.GetActiveScene();
-
-        Destroy(GameObject.FindWithTag("Player"));
-
-        SceneManager.LoadScene(Menu, LoadSceneMode.Additive);
-
-        SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));*/
-
-
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        //Destroy(GameObject.FindWithTag("Player"));
-
         StartCoroutine(QuitGame());
         stopScore = true;
     }
 
-    public void Retry()
-    {
-        //CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetHashCode();
-
-        //Debug.Log(CurrentPlayer);
-        isAlive = true;
-        playerScript.isAlive = true;
-
-        GameOver.SetActive(false);
-        Running.SetActive(true);
-
-        test = true;
-        //playerScript.isAlive = true;
-        Invoke("Invinciblility", 2);
+    
 
 
-
-    }
-
-    IEnumerator ReturnToMenu()
-    {
-
-        Destroy(GameObject.FindWithTag("Player"));
-        
-
-        GameObject CurrentPlayer = GameObject.FindGameObjectWithTag("Player");
-
-        Scene currentScene = SceneManager.GetActiveScene();
-
-        isAlive = true;
-
-        
-
-
-        SceneManager.LoadScene(Menu);
-
-      
-        
-        SceneManager.MoveGameObjectToScene(Coins, SceneManager.GetSceneByName(Menu));
-        //SceneManager.MoveGameObjectToScene(CurrentPlayer, SceneManager.GetSceneByName(Menu));
-        
-        
-        
-
-
-
-        Time.timeScale = 1;
-
-        //Destroy(GameObject.FindWithTag("Player"));
-
-        SceneManager.UnloadScene(currentScene);
-        //SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(MangoMayhem));
-
-
-
-        AsyncOperation asyncReLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-
-        Instantiate(Coins);
-        while (!asyncReLoad.isDone)
-        {
-            yield return null;
-        }
-    }
 
     
 
     IEnumerator QuitGame()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-
-        //Destroy(GameObject.FindWithTag("Player"));
-
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Menu, LoadSceneMode.Additive);
-
         SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));
-        //SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Player"), SceneManager.GetSceneByName(Menu));
-
 
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
 
-        
-
-
-        //SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("Coins"), SceneManager.GetSceneByName(Menu));
-
         SceneManager.UnloadSceneAsync(currentScene);
-
-        //SceneManager.LoadScene(MangoMayhem, LoadSceneMode.Additive);
 
     }
 }

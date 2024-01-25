@@ -7,7 +7,6 @@ using System;
 public class ScoreScript : MonoBehaviour
 {
     PlayerScript playerScript;
-    RunButtons runButtons;
     CharcterSelectMenu characterSelectMenu;
 
     public TMP_Text coinText;
@@ -36,7 +35,6 @@ public class ScoreScript : MonoBehaviour
     {
         score = 1;
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        runButtons = GameObject.FindGameObjectWithTag("runButtons").GetComponent<RunButtons>();
         characterSelectMenu = GameObject.FindGameObjectWithTag("characterMenu").GetComponent<CharcterSelectMenu>();
         coins = characterSelectMenu.coins;
     }

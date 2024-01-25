@@ -64,8 +64,6 @@ public class PlayerScript : MonoBehaviour
         {
             usedFirstJump = false;
             CurrentJumpValue = JumpValue;
-            //Debug.Log("Running");
-            
         }
 
         if (OnGround == false && CurrentJumpValue <= checkJump && CurrentJumpValue > 0 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)))
@@ -73,7 +71,6 @@ public class PlayerScript : MonoBehaviour
             RB.velocity = Vector2.up * Jumpforce;
             CurrentJumpValue--;
             usedFirstJump = false;
-            //Debug.Log("Double Jump");
             anim.SetBool("Grounded", false);
             OnGround = false;
 
@@ -83,7 +80,6 @@ public class PlayerScript : MonoBehaviour
         {
             RB.velocity = Vector2.up * Jumpforce;
             usedFirstJump = true;
-            //Debug.Log("First Jump");
             anim.SetBool("Grounded", false);
             OnGround = false;
             CurrentJumpValue = JumpValue - 1;
@@ -114,7 +110,6 @@ public class PlayerScript : MonoBehaviour
         {
             isAlive = false;
             runButtons.isAlive = false;
-            //Time.timeScale = 0;
 
         }
 
@@ -122,8 +117,6 @@ public class PlayerScript : MonoBehaviour
         {
             isAlive = false;
             runButtons.isAlive = false;
-            //Time.timeScale = 0;
-
         }
 
         if (collision.gameObject.CompareTag("Coin"))
